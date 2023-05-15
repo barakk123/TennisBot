@@ -6,14 +6,11 @@ $(document).ready(function() {
     $('#mod').addClass('show');
   });
 
-  // Function to close the lightbox
   function closeLightbox() {
     $('#mod').removeClass('show');
   }
 
-  // Add an event listener to close the lightbox when the overlay is clicked
   $('.overlay').click(closeLightbox);
-  // Add an event listener to close the lightbox when the "OK" button is clicked
   $('.lightbox-button button').click(closeLightbox);
 });
 
@@ -28,7 +25,6 @@ function complete() {
   localStorage.name = NameOfGoal;
   localStorage.startDate = startDate;
   localStorage.endDate = endDate;
-  
 }
 
 function save() {
@@ -91,7 +87,6 @@ function save() {
   localStorage.dropshot = jd;
 
   document.getElementById("mod").style.display = "block";
-
 }
 
 function go() {
