@@ -408,7 +408,18 @@ tr:nth-child(odd) {
 .nav-home.navlink {
 text-decoration: none;
 }
-  
+
+.green1 {
+  color: green;
+}
+
+.orange {
+  color: orange;
+}
+
+.red {
+  color: red;
+}
 
 @media (min-width: 955px) {
   .nav-container {
@@ -418,6 +429,10 @@ text-decoration: none;
     flex-direction: row-reverse; 
     background-color: #46a546;
     padding: 20px;
+  }
+
+  .bold {
+    : bold;
   }
 
   .header-option {
@@ -714,6 +729,9 @@ text-decoration: none;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+  }
+  .navlinks-color {
+    color: black;
   }
 
 }
