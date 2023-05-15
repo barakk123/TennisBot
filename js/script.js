@@ -105,7 +105,7 @@ function go() {
   let dropshot = localStorage.dropshot;
 
   document.querySelector("body").innerHTML = `
-    name of goal: ${name}
+    Name of Goal: ${name}
     <br>
     Start Date: ${startDate}
     <br>

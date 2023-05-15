@@ -394,16 +394,6 @@ tr:nth-child(odd) {
     display: none;
   }
   
-  #goals-button-mobile:active {
-    outline: none;
-    border: none;
-
-  }
-
-  #reports-button-mobile:active {
-    outline: none;
-    border: none;
-  }
 
 .nav-home.navlink {
 text-decoration: none;
@@ -421,6 +411,10 @@ text-decoration: none;
   color: red;
 }
 
+#save-edit-goal-btn {
+  justify-content: center;
+}
+
 @media (min-width: 955px) {
   .nav-container {
    position: relative;
@@ -429,10 +423,6 @@ text-decoration: none;
     flex-direction: row-reverse; 
     background-color: #46a546;
     padding: 20px;
-  }
-
-  .bold {
-    : bold;
   }
 
   .header-option {
