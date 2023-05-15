@@ -1,49 +1,63 @@
-document.getElementById("mod").style.visibility="hidden";
+document.getElementById("mod").style.display = "none";
 
-function complete(){
-    localStorage.clear();
-let NameOfGoal = document.querySelector('#nameOfGoal').value;
-let startDate = document.querySelector('#startDate').value;
-let  endDate = document.querySelector('#endDate').value;
+$(document).ready(function() {
+  $('.form-timeline-chooseCategory').click(function(e) {
+    e.preventDefault();
+    $('#mod').addClass('show');
+  });
 
-console.log(NameOfGoal, startDate, endDate);
+  // Function to close the lightbox
+  function closeLightbox() {
+    $('#mod').removeClass('show');
+  }
 
-localStorage.name = NameOfGoal;
-localStorage.startDate = startDate;
-localStorage.endDate = endDate;
+  // Add an event listener to close the lightbox when the overlay is clicked
+  $('.overlay').click(closeLightbox);
+  // Add an event listener to close the lightbox when the "OK" button is clicked
+  $('.lightbox-button button').click(closeLightbox);
+});
 
-console.log(localStorage);
+function complete() {
+  localStorage.clear();
+  let NameOfGoal = document.querySelector('#nameOfGoal').value;
+  let startDate = document.querySelector('#startDate').value;
+  let endDate = document.querySelector('#endDate').value;
 
+  console.log(NameOfGoal, startDate, endDate);
+
+  localStorage.name = NameOfGoal;
+  localStorage.startDate = startDate;
+  localStorage.endDate = endDate;
+
+  console.log(localStorage);
 }
 
-function save(){
-let s1 = document.querySelector('#s1').value;
-let a1 = document.querySelector('#a1').value;
+function save() {
+  let s1 = document.querySelector('#s1').value;
+  let a1 = document.querySelector('#a1').value;
 
-let forHand ={
-startSpeed: 65,    
-speed: s1,
-averageSpeed: a1,
+  let forHand = {
+    startSpeed: 65,
+    speed: s1,
+    averageSpeed: a1,
+  };
+
+  let jfh = JSON.stringify(forHand);
+
+  localStorage.forHand = jfh;
+
+  console.log(localStorage);
+
+  document.getElementById("mod").style.display = "block";
 }
-let jfh= JSON.stringify(forHand);
 
-localStorage.forHand= jfh;
+function go() {
+  let name = localStorage.name;
+  let startDate = localStorage.startDate;
 
-console.log(localStorage);
-
-document.getElementById("mod").style.visibility="visible";
-
-}
-
-
-function go(){
-let name = localStorage.name;
-let startDate = localStorage.startDate;
-
-document.querySelector("body").innerHTML=`
-name: ${name}
-<br>
-Start Date: ${startDate}
-`;
-
+  document.querySelector("body").innerHTML = `
+    name: ${name}
+    <br>
+    Start Date: ${startDate}
+  `;
 }

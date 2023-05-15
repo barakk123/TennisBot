@@ -286,7 +286,9 @@ tr:nth-child(odd) {
   width: 100px;
 }
 
-
+#mod.show {
+  display: block;
+}
 .lightbox-container {
   /* Your modal styles */
   position: fixed;
