@@ -28,6 +28,12 @@ function complete() {
   localStorage.name = NameOfGoal;
   localStorage.startDate = startDate;
   localStorage.endDate = endDate;
+  localStorage.forHand = forHand;
+  localStorage.backhand = backhand;
+  localStorage.volley = volley;
+  localStorage.slice = slice;
+  localStorage.dropshot = dropshot;
+
 
   console.log(localStorage);
 }
@@ -54,10 +60,28 @@ function save() {
 function go() {
   let name = localStorage.name;
   let startDate = localStorage.startDate;
+  let endDate = localStorage.endDate;
+  let forHand = localStorage.forHand;
+  let backhand = localStorage.backhand;
+  let volley = localStorage.volley;
+  let slice = localStorage.slice;
+  let dropshot = localStorage.dropshot;
 
   document.querySelector("body").innerHTML = `
-    name: ${name}
+    name of goal: ${name}
     <br>
     Start Date: ${startDate}
+    <br>
+    End Date: ${endDate}
+    <br>
+    Forhand: ${forHand}
+    <br>
+    Backhand: ${backhand}
+    <br>
+    Volley: ${volley}
+    <br>
+    Slice: ${slice}
+    <br>
+    Drop shot: ${dropshot}
   `;
 }
