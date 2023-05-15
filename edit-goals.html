@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Goal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="nav-container">
+        <div class="header-container">
+            <div class="menu-container">
+                <a href="#">
+                    <img src="images/profile1220-qg86.svg" class="logo margin" alt="profile">
+                </a>
+                <a href="#">
+                    <img src="images/bell1216-wuum.svg" class="logo green margin" alt="Notifications">
+                </a>
+            </div>
+            <nav class="nav-desktop"> 
+                <ul>
+                    <li>
+                        <a href="#" class="nav-home navlink">
+                            <div class="text-home">Home</div>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Goals
+                            <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+    
+                                <li><a href="index.html">My Goals</a></li>
+                                <li><a href="#">Coach Goals</a></li>
+                            </ul>
+                            </div>
+                            </li>
+                    <li>
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Reports
+                        <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+    
+                            <li><a href="#">My Reports</a></li>
+                            <li><a href="#">Coach Reports</a></li>
+                        </ul>
+                        </div>
+                        </li>
+                    <li>
+                        <a href="#" class="nav-home navlink">
+                            <div class="text-home">Schedule</div>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <img src="images/logo.png" alt="logo" class="logo tennis">
+        </div>
+        
+        <nav class="nav-mobile"> 
+            <ul>
+                <li>
+                    <a href="#" class="nav-home navlink">
+                        <div class="text-home2">Home</div>
+                    </a>
+                </li>
+                <li>
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Goals
+                        <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+
+                            <li><a href="index.html">My Goals</a></li>
+                            <li><a href="#">Coach Goals</a></li>
+                        </ul>
+                        </div>
+                        </li>
+                <li>
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Reports
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+
+                        <li><a href="#">My Reports</a></li>
+                        <li><a href="#">Coach Reports</a></li>
+                    </ul>
+                    </div>
+                    </li>
+                <li>
+                    <a href="#" class="nav-home">
+                        <div class="text-home2">Schedule</div>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="change-header">
+        <nav class="breadcrumb">
+            <ol class="breadcrumb-list">
+                <li class="breadcrumb-item"><a href="./index.html">My Goals</a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <a href="#">Edit Goal</a>
+                </li>
+
+            </ol>
+        </nav>
+        <div class="header-option">
+            <h1 class="h1-space">Edit Goal</h1>
+
+            <select class="select-date" id="date-myGoals">
+                <option value="Strikes">Strikes</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="tableChooseCategory">
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Current</th>
+                    <th>Goal</th>
+                    <th></th>
+                    <th>Current</th>
+                    <th>Goal</th>
+                </tr>
+            </thead>
+            <tbody class="tbodyChooseCategory">
+                <tr>
+                    <td>Forhand</td>
+                    <td>Avg. Speed &nbsp; 65</td>
+                    <td>-> &nbsp; &nbsp; <input type="number"> km/h</td>
+                    <td>Accuracy</td>
+                    <td>62</td>
+                    <td>-> &nbsp; &nbsp; <input type="number"> %</td>
+                </tr>
+                <tr>
+                    <td>Backhand</td>
+                    <td>Avg. Speed &nbsp; 73</td>
+                    <td>-> &nbsp; &nbsp; <input type="number"> km/h</td>
+                    <td>Accuracy</td>
+                    <td>68</td>
+                    <td>-> &nbsp; &nbsp; <input type="number"> %</td>
+                </tr>
+                <tr>
+                    <td>Volley</td>
+                    <td>Avg. Speed &nbsp; 92</td>
+                    <td>-> &nbsp; &nbsp; <input type="number"> km/h</td>
+                    <td>Accuracy</td>
+                    <td>59</td>
+                    <td>-> &nbsp; &nbsp; <input type="number"> %</td>
+                </tr>
+                <tr>
+                    <td>Slice</td>
+                    <td>Avg. Speed &nbsp; 60</td>
+                    <td>-> &nbsp; &nbsp; <input type="number"> km/h</td>
+                    <td>Accuracy</td>
+                    <td>55</td>
+                    <td>-> &nbsp; &nbsp; <input type="number"> %</td>
+                </tr>
+                <tr>
+                    <td>Drop-Shot</td>
+                    <td>Avg. Speed &nbsp; 50</td>
+                    <td>-> &nbsp; &nbsp; <input type="number"> km/h</td>
+                    <td>Accuracy</td>
+                    <td>47</td>
+                    <td>-> &nbsp; &nbsp; <input type="number"> %</td>
+                </tr>
+            </tbody>
+        </table>
+        
+    </div>
+</body>
+
+</html>

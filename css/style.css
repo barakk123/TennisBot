@@ -1,0 +1,631 @@
+
+.nav-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 14px;
+  padding: 6px;
+}
+
+.nav-mobile {
+  display: block;
+}
+
+.nav-desktop {
+  display: none;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+}
+
+.tennis {
+  width: 70px;
+  height: 58px;
+}
+
+.margin {
+  margin-right: 20px;
+}
+
+.green {
+  background-color: green;
+  border-radius: 50px;
+  border: 8px solid green;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.text-home2 {
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+  font-weight: bold;
+  font-family: "Tahoma";
+}
+
+
+.btn {
+    color: rgb(0, 0, 0) !important;
+    background-color: transparent !important;
+    border-color: transparent !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    font-family: "Tahoma" !important;
+}
+
+.header {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  /* height: 80px; */
+}
+
+
+    
+.breadcrumb {
+  display: none;
+}
+
+.headline {
+  display: flex;
+  margin: 20 0 0 6px;
+  align-items: center;
+  justify-content: center;
+  font-family: "Segoe UI";
+  font-size: 24px;
+  flex-grow: 1;
+}
+
+.profile-notifi-cont {
+  align-items: center;
+  display: flex;
+}
+
+#date-myGoals {
+  height: 22px;
+  max-height: 22px;
+  width: 150px;
+  margin-left: 10px;
+}
+
+select.select-date {
+  /* Remove default appearance */
+  
+
+  /* Add custom styles */
+  padding: 0px 12px;
+  font-weight: 600;
+  border-radius: 5px;
+  border: 2px solid #ccc;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+
+}
+
+select.select-date:hover,
+select.select-date:focus {
+  border-color: #666;
+}
+
+select.select-date option {
+  /* Add custom styles */
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #fff;
+  color: #333;
+}
+
+select.select-date option:checked {
+  /* Add custom styles */
+  background-color: #ccc;
+  color: #fff;
+}
+
+.image-button {
+  background-color: transparent;
+  border: none;
+  width: 20%;
+}
+
+.image-button img {
+  width: 50px;
+  /* Set the width of your image */
+  height: 50px;
+  /* Set the height of your image */
+}
+
+
+
+/*  */
+
+table {
+  width: 100%;
+}
+
+.tableMyGoals {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+td {
+  font-size: 20px;
+  padding: 20px !important;
+}
+
+tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+.formDiv {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 14px;
+}
+
+.formDiv>form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 1000px;
+
+}
+
+.header-option {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+ 
+
+}
+
+.h1-space {
+  margin: 0 0 0 6px;
+  align-items: center;
+  font-family: "Segoe UI";
+  font-size: 18px;
+  
+  display: flex;
+}
+
+.tableChooseCategory .tbodyChooseCategory input {
+  width: 70px;
+}
+
+.tableChooseCategory {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.tableChooseCategory th {
+  text-align: center;
+  font-size: 20px;
+}
+
+.tableChooseCategory img {
+
+  width: 139px;
+  height: 30px;
+}
+
+
+.button-img-div {
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-img-div>button {
+  border: none;
+  border-radius: 5px;
+  width: 80px;
+  font-size: 18px;
+  height: 30px;
+
+}
+
+.imageMenu1 {
+  width: 200px;
+  height: 30px;
+  margin-left: 160px;
+}
+
+.form-timeline {
+  margin-bottom: 20px;
+  margin-left: 10px;
+  height: 30px;
+}
+
+.form-timeline-chooseCategory {
+  margin-left: -32px;
+  height: 30px;
+}
+
+.form-timeline-size {
+  height: 26px;
+  margin-right: 10px;
+}
+
+#header-add-goals {
+  display: block;
+}
+
+#submit-button {
+  margin-top: 20px;
+  height: 40px;
+  width: 100px;
+}
+
+
+.lightbox-container {
+  /* Your modal styles */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  background-color: #fff;
+  /* Add any other necessary styles */
+
+  /* Responsive styles */
+  max-width: 90%;
+  max-height: 90%;
+  width: auto;
+  height: auto;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust the alpha value (0.5) to control the darkness */
+  z-index: 9998;
+}
+
+  
+  
+  
+  
+  
+  
+
+  .lightbox-lightbox {
+    width: 464px;
+    height: 270px;
+    position: relative;
+    align-items: flex-start;
+    flex-shrink: 1;
+    background-color: rgba(255, 255, 255, 1);
+  }
+  .lightbox-button {
+    top: 181px;
+    left: 137px;
+    display: flex;
+    position: absolute;
+    align-items: flex-start;
+    flex-shrink: 1;
+    background-color: rgba(235, 235, 235, 1);
+  }
+  .lightbox-text {
+    top: 15px;
+    left: 72px;
+    color: rgba(0, 0, 0, 1);
+    height: auto;
+    position: absolute;
+    font-size: 20px;
+    font-style: Bold;
+    text-align: left;
+    font-family: tahoma;
+    font-weight: 700;
+    line-height: normal;
+    font-stretch: normal;
+    text-decoration: none;
+  }
+  .lightbox-group28 {
+    top: 102.99934387207031px;
+    left: 48.000030517578125px;
+    width: 368.9998779296875px;
+    height: 41.000648498535156px;
+    display: flex;
+    position: absolute;
+    align-items: flex-start;
+    flex-shrink: 1;
+  }
+  .lightbox-text2 {
+    top: 10.000648498535156px;
+    left: 51.9998779296875px;
+    color: rgba(0, 0, 0, 1);
+    height: auto;
+    position: absolute;
+    font-size: 22px;
+    font-style: Bold;
+    text-align: left;
+    font-family: tahoma;
+    font-weight: 700;
+    line-height: normal;
+    font-stretch: normal;
+    text-decoration: none;
+  }
+  .lightbox-union {
+    top: 0px;
+    left: 26.234771728515625px;
+    width: 20px;
+    height: 37px;
+    position: absolute;
+  }
+  .lightbox-logo3 {
+    top: 5px;
+    left: 2px;
+    width: 104px;
+    height: 87px;
+    position: absolute;
+  }
+
+
+
+@media (min-width: 955px) {
+  .nav-container {
+   position: relative;
+  }
+  .header-container {
+    flex-direction: row-reverse; 
+    background-color: #46a546;
+    padding: 20px;
+  }
+
+  .header-option {
+    margin: 6px;
+  }
+  .logo {
+    width: 80px;
+    height: 80px;
+  }
+
+  .green {
+    background-color: transparent;
+    border-radius: 0;
+    border: hidden;
+    width: 60px;
+    height: 60px;
+    margin-left: 30px;
+  }
+
+  .tennis {
+    width: 125px;
+    height: 90px;
+  }
+
+  .margin {
+    margin-right: 10px;
+  }
+
+  .nav-mobile {
+    display: none;
+  }
+  
+  .nav-desktop {
+    display: block;
+  }
+
+  ul {
+    width: 50vw;
+    justify-content: space-between;
+  }
+
+  .text-home {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: "Tahoma";
+    display: inline-block;
+    padding: 6px 12px;
+
+  }
+
+  .text-home:hover {
+    background-color: #3d923d;
+    border-radius: 50px;
+    cursor: pointer;
+    
+    
+  }
+
+  .dropdown-menu {
+    width: 160px;
+  }
+
+  .btn {
+    color: rgb(255, 255, 255) !important;
+    background-color: transparent !important;
+    border-color: transparent !important;
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    font-family: "Tahoma" !important;
+  }
+
+  .dropdown:hover {
+    background-color: #3d923d;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+
+  .nav-home:hover {
+    background-color: #3d923d;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+
+  .nav-menu>ul>li {
+    display: flex;
+  }
+
+  .headline {
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0;
+    font-size: 36px;
+  }
+
+  .h1-space {
+    align-items: center;
+    font-size: 36px;
+  }
+  
+  .breadcrumb {
+    display: block;
+    width: 45%;
+    max-width: 45%;
+    background-color: transparent !important;
+  }
+  
+  .breadcrumb-list {
+    display: flex;
+    padding: 0;
+    margin: 30px;
+    color: blue;
+    /* change color to blue */
+  }
+  
+  .breadcrumb-item {
+    margin-right: 10px;
+    font-family: Helvetica;
+    font-weight: bold;
+    list-style-type: none;
+  }
+  
+  .breadcrumb-item:not(:last-child):after {
+    /* add separators */
+    content: ">>";
+    margin-left: 10px;
+  }
+  
+  .breadcrumb-item:last-child {
+    font-weight: bold;
+  }
+  
+  .breadcrumb-item a {
+    color: inherit;
+    /* use parent color */
+    text-decoration: none;
+    list-style-type: none;
+  }
+  
+  .breadcrumb-item a:hover {
+    text-decoration: underline;
+  }
+  
+  .active {
+    color: black;
+    /* change active page color */
+  }
+
+  #date-myGoals {
+    height: 40px;
+    max-height: 40px;
+    width: 500px;
+    margin-left: 100px;
+  }
+
+  select.select-date {
+    font-size: 22px;
+  }
+
+  .form-timeline {
+    margin-bottom: 20px;
+    margin-left: 10px;
+  }
+
+  .form-timeline-chooseCategory {
+    height: 30px;
+  }
+
+  .form-timeline-size {
+    height: 52px;
+    margin-right: 3px;
+  }
+
+  .button-img-div>button {
+    margin-right: 224px;
+    border: none;
+    border-radius: 5px;
+    width: 100px;
+    font-size: 24px;
+    height: 40px;
+  }
+  
+  #nameOfGoal {
+    width: 600px;
+    font-size: 24px;
+  }
+
+  #form-Startdate-size {
+    margin-top: 10px;
+    font-size: 20px;
+  }
+
+  .form-nameofgoal-size {
+    font-size: 26px;
+  }
+
+  #form-goalName-size {
+    margin-top: 10px;
+  }
+
+  input[type="date"]#startDate #endDate {
+    width: 30%;
+    height: 100%;
+  }
+
+  #startDate {
+    font-size: 24px;
+  }
+
+  #endDate {
+    font-size: 24px;
+  }
+  
+  .lightbox-container {
+    max-width: 80%;
+  }
+ /* .lightbox-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: -450px;
+*/
+
+}

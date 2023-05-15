@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Goals</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="nav-container">
+        <div class="header-container">
+            <div class="menu-container">
+                <a href="#">
+                    <img src="images/profile1220-qg86.svg" class="logo margin" alt="profile">
+                </a>
+                <a href="#">
+                    <img src="images/bell1216-wuum.svg" class="logo green margin" alt="Notifications">
+                </a>
+            </div>
+            <nav class="nav-desktop"> 
+                <ul>
+                    <li>
+                        <a href="#" class="nav-home navlink">
+                            <div class="text-home">Home</div>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Goals
+                            <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+    
+                                <li><a href="#">My Goals</a></li>
+                                <li><a href="#">Coach Goals</a></li>
+                            </ul>
+                            </div>
+                            </li>
+                    <li>
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Reports
+                        <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+    
+                            <li><a href="#">My Reports</a></li>
+                            <li><a href="#">Coach Reports</a></li>
+                        </ul>
+                        </div>
+                        </li>
+                    <li>
+                        <a href="#" class="nav-home navlink">
+                            <div class="text-home">Schedule</div>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <img src="images/logo.png" alt="logo" class="logo tennis">
+        </div>
+        
+        <nav class="nav-mobile"> 
+            <ul>
+                <li>
+                    <a href="#" class="nav-home navlink">
+                        <div class="text-home2">Home</div>
+                    </a>
+                </li>
+                <li>
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Goals
+                        <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+
+                            <li><a href="#">My Goals</a></li>
+                            <li><a href="#">Coach Goals</a></li>
+                        </ul>
+                        </div>
+                        </li>
+                <li>
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Reports
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+
+                        <li><a href="#">My Reports</a></li>
+                        <li><a href="#">Coach Reports</a></li>
+                    </ul>
+                    </div>
+                    </li>
+                <li>
+                    <a href="#" class="nav-home">
+                        <div class="text-home2">Schedule</div>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="header">
+        <nav class="breadcrumb">
+            <ol class="breadcrumb-list">
+                <li class="breadcrumb-item active" aria-current="page">
+                    <a href="#">My Goals</a>
+                </li>
+            </ol>
+        </nav>
+        <h1 class="headline">My Goals</h1>
+
+        <select class="select-date" id="date-myGoals">
+            <option value="Date">Date</option>
+            <option value="Progress">Progress</option>
+            <option value="Name">Name</option>
+        </select>
+
+        <button class="image-button" onclick="location.href='add-goals.html'">
+            <img src="images/add-button-with-plus-symbol-in-a-black-circle.svg" alt="Button Image">
+        </button>
+    </div>
+    <div class="tableMyGoals">
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Slice and drop acc <br /> 01/01/2023 - 14/03/2023</td>
+                    <td>Slice <br /> Drop-shot</td>
+                    <td>Accuracy <br /> Accuracy</td>
+                    <td>55 -> 64% <br /> 47 -> 58%</td>
+                    <td><a href="edit-goals.html">✏️</a> &nbsp; <a href="#">🗑️</a><br /> <a href="edit-goals.html">✏️</a> &nbsp; <a
+                            href="#">🗑️</a></td>
+                    <td>58% <br /> In progress</td>
+                </tr>
+                <tr>
+                    <td>Powerful Volley <br /> 21/11/2022 - 12/04/2023</td>
+                    <td>Volley <br /></td>
+                    <td>Speed <br /> Accuracy</td>
+                    <td>92 -> 105 km/h <br /> 59 -> 65%</td>
+                    <td><a href="edit-goals.html">✏️</a> &nbsp; <a href="#">🗑️</a><br /> <a href="edit-goals.html">✏️</a> &nbsp; <a
+                            href="#">🗑️</a></td>
+                    <td>60% <br /> In progress</td>
+                </tr>
+                <tr>
+                    <td>Backhand favorite <br /> 10/08/2022 - 10/01/2023</td>
+                    <td>Backhand <br /></td>
+                    <td>Speed <br /> Accuracy</td>
+                    <td>73 -> 81 km/h <br /> 68 -> 77%</td>
+                    <td></td>
+                    <td>100% <br /> Complete</td>
+                </tr>
+                <tr>
+                    <td>My first goal <br /> 14/10/2021 - 14/01/2022</td>
+                    <td>Forehand <br /></td>
+                    <td>Speed <br /></td>
+                    <td>54 -> 70 km/h <br /></td>
+                    <td></td>
+                    <td>100% <br /> Failed</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
