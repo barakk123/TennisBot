@@ -248,9 +248,9 @@ tr:nth-child(odd) {
   height: 30px;
 }
 
-.form-timeline-chooseCategory {
+#form-timeline-chooseCategory {
   margin-left: -32px;
-  height: 30px;
+  height: 26px;
 }
 
 .form-timeline-size {
@@ -570,8 +570,8 @@ text-decoration: none;
     margin-left: 10px;
   }
 
-  .form-timeline-chooseCategory {
-    height: 30px;
+  #form-timeline-chooseCategory {
+    height: 52px;
   }
 
   .form-timeline-size {
