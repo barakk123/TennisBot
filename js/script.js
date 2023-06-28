@@ -1,119 +1,141 @@
-document.getElementById("mod").style.display = "none";
+const apiUrl = 'get.php'; // Changed from 'index.php'
 
-$(document).ready(function() {
-  $('.form-timeline-chooseCategory').click(function(e) {
-    e.preventDefault();
-    $('#mod').addClass('show');
+async function fetchGoals() {
+    const response = await fetch(apiUrl);
+    const goals = await response.json();
+
+    for (const goal of goals) {
+        createGoalElement(goal);
+    }
+}
+
+async function deleteGoal(id) {
+  const response = await fetch(`delete_goal.php?id=${id}`, {
+      method: 'DELETE'
   });
 
-  function closeLightbox() {
-    $('#mod').removeClass('show');
+  if (response.ok) {
+      // Remove the goal element from the page
+      const goalElement = document.querySelector(`.row-parent[data-id='${id}']`);
+      goalElement.remove();
+  } else {
+      console.error('Failed to delete goal');
   }
-
-  $('.overlay').click(closeLightbox);
-  $('.lightbox-button button').click(closeLightbox);
-});
-
-function complete() {
-
-  localStorage.clear();
-
-  let NameOfGoal = document.querySelector('#nameOfGoal').value;
-  let startDate = document.querySelector('#startDate').value;
-  let endDate = document.querySelector('#endDate').value;
-
-  localStorage.name = NameOfGoal;
-  localStorage.startDate = startDate;
-  localStorage.endDate = endDate;
 }
 
-function save() {
-  let s1 = document.querySelector('#s1').value;
-  let a1 = document.querySelector('#a1').value;
-  let s2 = document.querySelector('#s2').value;
-  let a2 = document.querySelector('#a2').value;
-  let s3 = document.querySelector('#s3').value;
-  let a3 = document.querySelector('#a3').value;
-  let s4 = document.querySelector('#s4').value;
-  let a4 = document.querySelector('#a4').value;
-  let s5 = document.querySelector('#s5').value;
-  let a5 = document.querySelector('#a5').value;
 
-  let forHand = {
-    startSpeed: 65,
-    accuracyStart: 62,
-    speed: s1,
-    accuracy: a1,
-  };
-  
-  let backHand = {
-    startSpeed: 73,
-    accuracyStart: 68,
-    speed: s2,
-    accuracy: a2,
-  };
 
-  let volley = {
-    startSpeed: 92,
-    accuracyStart: 59,
-    speed: s3,
-    accuracy: a3,
-  };
+function createGoalElement(goal) {
+    let goalRowParentElement = document.createElement('div');
+    goalRowParentElement.className = 'row-parent';
+    goalRowParentElement.dataset.id = goal.id; 
 
-  let slice = {
-    startSpeed: 60,
-    accuracyStart: 55,
-    speed: s4,
-    accuracy: a4,
-  };
+    let goalColumn1Element = document.createElement('div');
+    goalColumn1Element.className = 'my-goals-column1';
 
-  let dropshot = {
-    startSpeed: 50,
-    accuracyStart: 47,
-    speed: s5,
-    accuracy: a5,
-  }
+    let goalTitle = document.createElement('div');
+    goalTitle.className = 'my-goals-goalTitle';
+    goalTitle.textContent = goal.title;
+    goalColumn1Element.appendChild(goalTitle);
 
-  let jfh = JSON.stringify(forHand);
-  let jbh = JSON.stringify(backHand);
-  let jv = JSON.stringify(volley);
-  let js = JSON.stringify(slice);
-  let jd = JSON.stringify(dropshot);
+    let goalDate = document.createElement('div');
+    goalDate.className = 'my-goals-goalDate';
+    goalDate.textContent = goal.start_date + ' - ' + goal.end_date;
+    goalColumn1Element.appendChild(goalDate);
 
-  localStorage.forHand = jfh;
-  localStorage.backHand = jbh;
-  localStorage.volley = jv;
-  localStorage.slice = js;
-  localStorage.dropshot = jd;
+    goalRowParentElement.appendChild(goalColumn1Element);
 
-  document.getElementById("mod").style.display = "block";
+    let goalColsParentElement = document.createElement('div');
+    goalColsParentElement.className = 'my-goals-cols-2-4-parent';
+
+    for (const category of goal.categories) {
+        let categoryElement = createCategoryElement(category);
+        goalColsParentElement.appendChild(categoryElement);
+    }
+
+    goalRowParentElement.appendChild(goalColsParentElement);
+    // Column 5
+    let goalColumn5Element = document.createElement('div');
+    goalColumn5Element.className = 'my-goals-column5';
+
+    let editElement = document.createElement('a');
+    editElement.className = 'my-goals-edit';
+    editElement.textContent = '✏️';
+    editElement.href = `/edit_goal.php?id=${goal.id}`;  // Assuming your edit page is 'edit_goal.php'
+    goalColumn5Element.appendChild(editElement);
+
+
+    let deleteElement = document.createElement('a');
+    deleteElement.className = 'my-goals-delete';
+    deleteElement.textContent = '🗑️';
+    deleteElement.href = '#';
+    deleteElement.onclick = function() {
+        if (confirm('Are you sure you want to delete this goal?')) {
+            deleteGoal(goal.id);
+        }
+    };
+    goalColumn5Element.appendChild(deleteElement);
+
+
+    goalRowParentElement.appendChild(goalColumn5Element);
+
+    // Column 6
+    let goalColumn6Element = document.createElement('div');
+    goalColumn6Element.className = 'my-goals-column6';
+
+    let progressElement = document.createElement('div');
+    progressElement.className = 'my-goals-column6-val';
+    progressElement.textContent = goal.progress + '%'; // assuming progress is a number
+    goalColumn6Element.appendChild(progressElement);
+
+    let statusElement = document.createElement('div');
+    statusElement.textContent = goal.status;
+    goalColumn6Element.appendChild(statusElement);
+
+    goalRowParentElement.appendChild(goalColumn6Element);
+    // Append the goal element to the goals table
+    document.querySelector('.my-goals-table').appendChild(goalRowParentElement);
 }
 
-function go() {
-  let name = localStorage.name;
-  let startDate = localStorage.startDate;
-  let endDate = localStorage.endDate;
-  let forHand = localStorage.forHand;
-  let backHand = localStorage.backHand;
-  let volley = localStorage.volley;
-  let slice = localStorage.slice;
-  let dropshot = localStorage.dropshot;
+function createCategoryElement(category) {
+    let categoryElement = document.createElement('div');
+    categoryElement.className = 'my-goals-cols-2-4';
 
-  document.querySelector("body").innerHTML = `
-    Name of Goal: ${name}
-    <br>
-    Start Date: ${startDate}
-    <br>
-    End Date: ${endDate}
-    <br>
-    Forhand: ${forHand}
-    <br>
-    Backhand: ${backHand}
-    <br>
-    Volley: ${volley}
-    <br>
-    Slice: ${slice}
-    <br>
-    Drop shot: ${dropshot}
-  `;
+    let categoryNameElement = document.createElement('div');
+    categoryNameElement.className = 'my-goals-column2';
+    categoryNameElement.textContent = category.name;
+    categoryElement.appendChild(categoryNameElement);
+
+    let subCategoryParentElement = document.createElement('div');
+    subCategoryParentElement.className = 'my-goals-column3-4-parent';
+
+    for (const subcategory of category.subcategories) {
+        let subcategoryElement = createSubcategoryElement(subcategory);
+        subCategoryParentElement.appendChild(subcategoryElement);
+    }
+
+    categoryElement.appendChild(subCategoryParentElement);
+    
+    return categoryElement;
 }
+
+function createSubcategoryElement(subcategory) {
+    let subcategoryElement = document.createElement('div');
+    subcategoryElement.className = 'my-goals-column3-4';
+
+    let subcategoryName = document.createElement('div');
+    subcategoryName.className = 'my-goals-column3';
+    subcategoryName.textContent = subcategory.name;
+    subcategoryElement.appendChild(subcategoryName);
+
+    let subcategoryChange = document.createElement('div');
+    subcategoryChange.className = 'my-goals-column4';
+    subcategoryChange.textContent = subcategory.current + ' -> ' + subcategory.target;
+    subcategoryElement.appendChild(subcategoryChange);
+
+    return subcategoryElement;
+}
+
+
+// Fetch goals on page load
+fetchGoals();

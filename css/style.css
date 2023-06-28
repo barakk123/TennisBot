@@ -50,7 +50,7 @@
 ul {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   list-style: none;
   padding: 0;
 }
@@ -77,11 +77,13 @@ li {
   text-decoration: none !important;
 }
 
+.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
+  outline: none !important;
+  outline-offset: none !important;
+}
+
 .header {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: space-between;
+  display: block;
 }
     
 .breadcrumb {
@@ -90,12 +92,13 @@ li {
 
 .headline {
   display: flex;
-  margin: 20px 0px 0px 6px;
+  
   align-items: center;
   justify-content: center;
   font-family: "Segoe UI";
-  font-size: 24px;
+  font-size: 30px;
   flex-grow: 1;
+  font-weight: bold;
 }
 
 .profile-notifi-cont {
@@ -104,9 +107,10 @@ li {
 }
 
 #date-myGoals {
+  margin-top: 20px;
   height: 22px;
   max-height: 22px;
-  width: 150px;
+  width: 188px;
   margin-left: 10px;
 }
 
@@ -140,8 +144,8 @@ select.select-date option:checked {
 .image-button {
   background-color: transparent;
   border: none;
-  margin-left: 24px;
-  margin-right: 24px;
+  margin-top: 18px;
+  transform: scale(0.6);
 }
 
 .image-button img {
@@ -161,8 +165,7 @@ table {
 }
 
 td {
-  font-size: 20px;
-  padding: 20px !important;
+  font-size: 3vw;
 }
 
 tr:nth-child(odd) {
@@ -397,7 +400,163 @@ text-decoration: none;
   justify-content: center;
 }
 
-@media (min-width: 955px) {
+.my-goals-table {
+  margin-top: 20px;
+  flex-grow: 1;
+  height: 100%;
+}
+
+.row-parent {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #ccc;
+  width: 100%;
+  height: auto;
+  justify-content: space-between;
+  padding: 8px;
+  align-items: center;
+}
+
+.row-parent:nth-child(even) {
+  background-color: white;
+}
+
+.my-goals-column1 {
+  max-width: 52%;
+}
+
+.my-goals-goalTitle {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-weight: bold;
+}
+
+.my-goals-cols-2-4 {
+  display: flex;
+  order: 3;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+
+.my-goals-column2 {
+  max-width: 33.3%;
+  width: 33.3%;
+  font-weight: bold;
+}
+
+.my-goals-column3 {
+  width: 33.3%;
+
+}
+
+.my-goals-column4 {
+  flex-grow: 2;
+  margin-left: 12px;
+}
+
+.my-goals-column3-4 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.my-goals-column3-4-parent {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: end;
+  width: -webkit-fill-available;
+}
+
+.my-goals-cols-2-4-parent {
+  display: flex;
+  flex-grow: 0.6;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+  order: 1;
+}
+
+.my-goals-column5 {
+  display: flex;
+}
+
+.my-goals-column6 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.my-goals-column6-val {
+  font-weight: bold;
+}
+
+.my-goals-edit {
+  margin: 0px 10px;
+  font-size: 16px;
+}
+
+.my-goals-edit:hover, .my-goals-delete:hover {
+  text-decoration: none;
+}
+
+.my-goals-delete {
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.wrapper-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (min-width: 517px) {
+  .my-goals-column5 {
+    justify-content: end;
+    display: flex;
+    flex-grow: 1;
+    margin-right: 54px;
+  }
+
+  .row-parent {
+    padding: 14px;
+  }
+
+  .my-goals-edit {
+    margin-right: 32px;
+  }
+
+  .wrapper-head {
+    justify-content: space-around;
+  }
+
+  .my-goals-column6-val, .my-goals-goalTitle {
+    font-weight: 900 !important;
+    font-size: large;
+  }
+  .my-goals-column2 {
+    font-size: bold;
+  }
+
+  .my-goals-edit, .my-goals-delete {
+    font-size: 18px;
+  }
+
+  .headline {
+    font-size: 34px;
+  }
+
+}
+
+@media (min-width: 990px) {
   .nav-container {
    position: relative;
   }
@@ -493,16 +652,16 @@ text-decoration: none;
   .headline {
     align-items: center;
     justify-content: center;
-    width: 100%;
-    margin: 0;
-    font-size: 36px;
+    margin-bottom: 50px;
+    font-size: 40px;
   }
 
   .image-button {
     background-color: transparent;
     border: none;
-    margin-left: 72px;
     margin-right: 72px;
+    margin-top: 0px;
+    transform: scale(1);
   }
 
   .h1-space {
@@ -515,6 +674,8 @@ text-decoration: none;
     width: 45%;
     max-width: 45%;
     background-color: transparent !important;
+    padding: 0px !important;
+    
   }
   
   .breadcrumb-list {
@@ -554,15 +715,21 @@ text-decoration: none;
     color: black;
   }
 
+  td {
+    font-size: 20px;
+    padding: 20px !important;
+  }
+
   #date-myGoals {
-    height: 40px;
-    max-height: 40px;
-    width: 500px;
+    margin-top: 0px;
+    height: 44px;
+    max-height: 48px;
+    width: 340px;
     margin-left: 100px;
   }
 
   select.select-date {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   .form-timeline {
@@ -623,9 +790,10 @@ text-decoration: none;
     max-width: 80%;
   }
 
+  
+
   .footer-container {
     display: block;
-    margin-top: 120px;
   }
 
   .footer-footer {
@@ -636,6 +804,7 @@ text-decoration: none;
     padding: 24px;
     align-items: center;
     justify-content: space-around;
+    margin-top: 100px;
   }
 
   .footer-text {
@@ -698,7 +867,52 @@ text-decoration: none;
     flex-direction: column;
     justify-content: space-between;
   }
+
   .navlinks-color {
     color: black;
   }
+
+  .my-goals-cols-2-4 {
+    order: 0;
+    flex-grow: 1;
+    width: auto;
+  }
+
+  .my-goals-cols-2-4-parent {
+    display: flex;
+    flex-grow: 0.6;
+    flex-direction: column;
+    justify-content: space-around;
+    width: inherit;
+
+  }
+
+  .my-goals-column5 {
+    display: flex;
+  }
+
+  .row-parent {
+    padding: 16px;
+    align-items: start;
+  }
+
+  .my-goals-edit {
+    margin: 0px 48px;
+    font-size: 24px;
+  }
+  
+  .my-goals-delete {
+    margin-right: 10px;
+    font-size: 24px;
+  }
+
+  .wrapper-head {
+    justify-content: space-between;
+  }
+
+  .my-goals-column1 {
+    max-width: 37%;
+  }
+
+  
 }
