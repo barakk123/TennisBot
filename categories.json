@@ -1,0 +1,22 @@
+{
+    "Strikes": {
+        "Forehand": {"Avg. Speed": 0, "Accuracy": 0},
+        "Backhand": {"Avg. Speed": 0, "Accuracy": 0},
+        "Volley": {"Avg. Speed": 0, "Accuracy": 0},
+        "Slice": {"Avg. Speed": 0, "Accuracy": 0},
+        "Drop-Shot": {"Avg. Speed": 0, "Accuracy": 0}
+    },
+    "Serves": {
+        "Flat-Serve": {"Avg. Speed": 0, "Accuracy": 0},
+        "Curved-Serve": {"Avg. Speed": 0, "Accuracy": 0},
+        "Spin-Serve": {"Avg. Speed": 0, "Accuracy": 0}
+    },
+    "Physical": {
+        "Fitness": {"Average": 0, "Current": 0},
+        "Stamina": {"Average": 0, "Current": 0}
+    },
+    "Position": {
+        "On-Hit": {"Average": 0, "Current": 0},
+        "Ball Await": {"Average": 0, "Current": 0}
+    }
+}

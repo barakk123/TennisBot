@@ -1,4 +1,4 @@
-const apiUrl = 'get.php'; // Changed from 'index.php'
+const apiUrl = 'get.php'; 
 
 async function fetchGoals() {
     const response = await fetch(apiUrl);
