@@ -1,4 +1,4 @@
-const apiUrl = 'get.php'; // Changed from 'index.php'
+const apiUrl = 'get.php'; 
 
 async function fetchGoals() {
     const response = await fetch(apiUrl);
@@ -23,12 +23,10 @@ async function deleteGoal(id) {
   }
 }
 
-
-
 function createGoalElement(goal) {
     let goalRowParentElement = document.createElement('div');
     goalRowParentElement.className = 'row-parent';
-    goalRowParentElement.dataset.id = goal.id; 
+    goalRowParentElement.dataset.id = goal.id;
 
     let goalColumn1Element = document.createElement('div');
     goalColumn1Element.className = 'my-goals-column1';
@@ -98,44 +96,43 @@ function createGoalElement(goal) {
 }
 
 function createCategoryElement(category) {
-    let categoryElement = document.createElement('div');
-    categoryElement.className = 'my-goals-cols-2-4';
+  let categoryElement = document.createElement('div');
+  categoryElement.className = 'my-goals-cols-2-4';
 
-    let categoryNameElement = document.createElement('div');
-    categoryNameElement.className = 'my-goals-column2';
-    categoryNameElement.textContent = category.name;
-    categoryElement.appendChild(categoryNameElement);
+  let categoryNameElement = document.createElement('div');
+  categoryNameElement.className = 'my-goals-column2';
+  categoryNameElement.textContent = category.name;
+  categoryElement.appendChild(categoryNameElement);
 
-    let subCategoryParentElement = document.createElement('div');
-    subCategoryParentElement.className = 'my-goals-column3-4-parent';
+  let subcategoryParentElement = document.createElement('div');
+  subcategoryParentElement.className = 'my-goals-column3-4-parent';
 
-    for (const subcategory of category.subcategories) {
-        let subcategoryElement = createSubcategoryElement(subcategory);
-        subCategoryParentElement.appendChild(subcategoryElement);
-    }
+  for (const subcategory of category.subcategories) {
+      let subcategoryElement = createSubcategoryElement(subcategory);
+      subcategoryParentElement.appendChild(subcategoryElement);
+  }
 
-    categoryElement.appendChild(subCategoryParentElement);
-    
-    return categoryElement;
+  categoryElement.appendChild(subcategoryParentElement);
+  
+  return categoryElement;
 }
 
 function createSubcategoryElement(subcategory) {
-    let subcategoryElement = document.createElement('div');
-    subcategoryElement.className = 'my-goals-column3-4';
+  let subcategoryElement = document.createElement('div');
+  subcategoryElement.className = 'my-goals-column3-4';
 
-    let subcategoryName = document.createElement('div');
-    subcategoryName.className = 'my-goals-column3';
-    subcategoryName.textContent = subcategory.name;
-    subcategoryElement.appendChild(subcategoryName);
+  let subcategoryName = document.createElement('div');
+  subcategoryName.className = 'my-goals-column3';
+  subcategoryName.textContent = subcategory.name;
+  subcategoryElement.appendChild(subcategoryName);
 
-    let subcategoryChange = document.createElement('div');
-    subcategoryChange.className = 'my-goals-column4';
-    subcategoryChange.textContent = subcategory.current + ' -> ' + subcategory.target;
-    subcategoryElement.appendChild(subcategoryChange);
+  let subcategoryChange = document.createElement('div');
+  subcategoryChange.className = 'my-goals-column4';
+  subcategoryChange.textContent = subcategory.current + ' -> ' + subcategory.target;
+  subcategoryElement.appendChild(subcategoryChange);
 
-    return subcategoryElement;
+  return subcategoryElement;
 }
-
 
 // Fetch goals on page load
 fetchGoals();
