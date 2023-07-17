@@ -1,13 +1,21 @@
 <?php
+include "db.php";
+
 session_start();
+
 if(!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])){
     //redirect to login or error page
     header("Location: login.php");
     exit;
 }
-$user_id = $_SESSION['user_id'];
+else if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id']) && !empty($_GET['id'])) {
+    $goalId = $_GET["id"];
+}
+else {
+    header("Location: index.php");
+    exit;
+}
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +24,7 @@ $user_id = $_SESSION['user_id'];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Goals</title>
+    <title>Edit Goal</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
@@ -37,15 +45,17 @@ $user_id = $_SESSION['user_id'];
             <ol class="breadcrumb-list">
                 <li class="breadcrumb-item"><a href="./index.php">My Goals</a></li>
                 <li class="breadcrumb-item active" aria-current="page">
-                    <a href="#">Add Goal</a>
+                    <a href="#">Edit Goal</a>
                 </li>
             </ol>
         </nav>
-        <h1 class="headline">Add Goal</h1>
+        <h1 class="headline">Edit Goal</h1>
     </div>
 
     <div class="formDiv">
-        <form action="./choose_category.php" method="post">
+        <form action="./updateGoal.php" method="post">
+            <input type="hidden" name="goal-id" id="goal-id" value="<?=$goalId;?>">
+
             <label class="form-nameofgoal-size">Name of goal</label>
             <input name="name" type="text" id="nameOfGoal" pattern=".+" required>
             <br>
@@ -57,21 +67,14 @@ $user_id = $_SESSION['user_id'];
             <input name="end_date" type="date" id="endDate" required>
             <br>
 
-            <button type="submit" id="submit-button">Continue</button>
+            <button type="submit" id="submit-button">Update</button>
         </form>
-    </div>
-
-    <div class="form-timeline">
-        <a href="add_goal.php"><img class="form-timeline-size" src="images/form-timeline-adgrey.svg"
-                alt="form-timeline-adgrey"></a>
-        <a href="#"><img class="form-timeline-size" id="form-timeline-chooseCategory"
-                src="images/form-timeline-chwhite.svg" alt="form-timeline-chwhite"></a>
     </div>
 
     <?php include_once 'common/footer.php'; ?>
 
     <script src="js/global.js"></script>
-    <script src="js/add_goal.js"></script>
+    <script src="js/edit_goal.js"></script>
 </body>
 
 </html>

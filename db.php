@@ -4,13 +4,16 @@
     $dbpass = "studDBpwWeb2!";
     $dbname = "dbShnkr23stud2";
 
+    //$dbhost = "localhost";
+    //$dbuser = "root";
+    //$dbpass = "";
+    //$dbname = "dbShnkr23stud2";
+
     // Create connection
     $connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
     // Check connection
     if(mysqli_connect_errno()) {
         die("DB connection failed: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")"
-        );
+    );
 }
-
-?>

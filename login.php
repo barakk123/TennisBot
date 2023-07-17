@@ -1,10 +1,9 @@
 <?php
     include "db.php";
-    include "config.php";
 
     session_start();
 
-    if(!empty($_POST["loginName"])) {
+    if($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST["loginName"]) && !empty($_POST["loginPass"])) {
 
         $username = $_POST["loginName"];
         $password = $_POST["loginPass"];
@@ -21,16 +20,18 @@
 
         if($row = mysqli_fetch_assoc($result)) {
             // Verify the password against the hashed password in the database
-            if($password == $row['password']) {
+            if(password_verify($password, $row['password']) || $password == $row['password']) {
                 $_SESSION["user_id"] = $row['id'];
                 $_SESSION["user_type"] = $row['userType'];
-                header('Location: ' . URL . 'index.php');
+                header('Location: index.php');
                 exit;
             } 
+            else {
+                $message = "Invalid Username or Password!";
+            }
             
         } else {
             $message = "Invalid Username or Password!";
-            //echo $message;
         }
     }
 ?>
@@ -40,51 +41,53 @@
 
 <html>
 
-	<head>
+<head>
+    <meta charset="utf-8">
+    <title>LOGIN</title>
 
-	    <meta charset="utf-8">  
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
-        <title>LOGIN</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
+    </script>
+</head>
 
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<body>
 
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>	   
+    <div class="container">
 
-	</head>
+        <h1>Login</h1>
 
-	<body>
+        <form action="login.php" method="post" id="frm">
 
-	    <div class="container">
+            <div class="form-group">
 
-            <h1>Login</h1>
+                <label for="loginName">Username: </label>
 
-            <form action="login.php" method="post" id="frm">
+                <input type="username" class="form-control" required name="loginName" id="loginName"
+                    aria-describedby="loginNameHelp" placeholder="Enter username">
 
-                <div class="form-group">
+            </div>
 
-                    <label for="loginName">Username: </label>
+            <div class="form-group">
 
-                    <input type="username" class="form-control" required name="loginName" id="loginName" aria-describedby="loginNameHelp" placeholder="Enter username">
+                <label for="loginPass">Password: </label>
 
-                </div>
+                <input type="password" class="form-control" required name="loginPass" id="loginPass"
+                    placeholder="Enter Password">
 
-                <div class="form-group">
+            </div>
 
-                    <label for="loginPass">Password: </label>
+            <button type="submit" class="btn btn-primary">Log Me In</button>
 
-                    <input type="password" class="form-control" required name="loginPass" id="loginPass" placeholder="Enter Password">
+            <div class="error-message"><?php if(isset($message)) { echo $message; } ?></div>
 
-                </div>
+        </form>
 
-                <button type="submit" class="btn btn-primary">Log Me In</button>
-
-                <div class="error-message"><?php if(isset($message)) { echo $message; } ?></div>    
-
-           </form>
-
-	    </div>
-
-	</body>
+    </div>
+    <script src="js/global.js"></script>
+</body>
 
 </html>
 

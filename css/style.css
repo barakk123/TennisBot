@@ -1,1052 +1,1422 @@
+body {
+    margin: 0;
+    display: flex;
+    flex-flow: column;
+    min-height: 100vh;
+    width: 100%;
+}
+
+footer {
+    margin-top: auto;
+}
+
+img {
+    object-fit: contain;
+}
+
+.logo-tennis {
+    background-image: url("../images/logo.png");
+    background-size: cover; /* You can set this to contain if you want to fit the image inside the div */
+    display: flex;
+    width: 76px;
+    height: 60px;
+}
 
 .nav-container {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .header-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  margin-bottom: 14px;
-  padding: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 14px;
+    padding: 6px;
 }
 
 .nav-mobile {
-  display: block;
+    display: block;
 }
 
 .nav-desktop {
-  display: none;
+    display: none;
 }
 
-.logo {
-  width: 40px;
-  height: 40px;
+.profile {
+    width: 40px;
+    height: 40px;
 }
 
 .tennis {
-  width: 70px;
-  height: 58px;
+    width: 70px;
+    height: 58px;
 }
 
 .margin {
-  margin-right: 20px;
+    margin-right: 20px;
 }
 
 .green {
-  background-color: green;
-  border-radius: 50px;
-  border: 8px solid green;
+    background-color: green;
+    border-radius: 50px;
+    border: 8px solid green;
 }
 
 .nav {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 }
 
 ul {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  list-style: none;
-  padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    list-style: none;
+    padding: 0;
+}
+
+.dropdown.drpdwn3 {
+    margin-left: -18px;
 }
 
 li {
-  margin-right: 5px;
-  margin-left: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
 }
 
 .text-home2 {
-  color: rgb(0, 0, 0);
-  font-size: 16px;
-  font-weight: bold;
-  font-family: "Tahoma";
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    font-weight: bold;
+    font-family: "Tahoma";
+}
+
+a {
+    text-decoration: none;
+}
+
+.my-goals-goalDate {
+    font-size: 14px;
 }
 
 .btn {
-  color: rgb(0, 0, 0) !important;
-  background-color: transparent !important;
-  border-color: transparent !important;
-  font-size: 16px !important;
-  font-weight: 700 !important;
-  font-family: "Tahoma" !important;
-  text-decoration: none !important;
+    color: rgb(0, 0, 0) !important;
+    background-color: transparent !important;
+    border-color: transparent !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    font-family: "Tahoma" !important;
+    text-decoration: none !important;
 }
 
-.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
-  outline: none !important;
-  outline-offset: none !important;
+.btn.active.focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn:active:focus,
+.btn:focus {
+    outline: none !important;
+    outline-offset: none !important;
+}
+
+.overlay_hamburger {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9998;
+    display: none;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0%;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    background-color: green;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav > .sidenavcontent > a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+    transition: 0.3s;
 }
 
 .header {
-  display: block;
+    display: block;
 }
-    
+
 .breadcrumb {
-  display: none;
+    display: none;
 }
 
 .headline {
-  display: flex;
-  
-  align-items: center;
-  justify-content: center;
-  font-family: "Segoe UI";
-  font-size: 30px;
-  flex-grow: 1;
-  font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    flex-grow: 1;
+    font-weight: bold;
 }
 
 .profile-notifi-cont {
-  align-items: center;
-  display: flex;
+    align-items: center;
+    display: flex;
 }
 
 #date-myGoals {
-  margin-top: 20px;
-  height: 22px;
-  max-height: 22px;
-  width: 188px;
-  margin-left: 10px;
+    margin-top: 20px;
+    margin-left: 10px;
 }
 
 select.select-date {
-  padding: 0px 12px;
-  font-weight: 600;
-  border-radius: 5px;
-  border: 2px solid #ccc;
-  background-color: #fff;
-  color: #333;
-  cursor: pointer;
+    padding: 0px 12px;
+    font-weight: 600;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
 }
 
 select.select-date:hover,
 select.select-date:focus {
-  border-color: #666;
+    border-color: #666;
 }
 
 select.select-date option {
-  font-size: 16px;
-  font-weight: 600;
-  background-color: #fff;
-  color: #333;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: #fff;
+    color: #333;
 }
 
 select.select-date option:checked {
-  background-color: #ccc;
-  color: #fff;
+    background-color: #ccc;
+    color: #fff;
 }
 
 .image-button {
-  background-color: transparent;
-  border: none;
-  margin-top: 18px;
-  transform: scale(0.6);
+    background-color: transparent;
+    border: none;
+    margin-top: 18px;
+    transform: scale(0.6);
+    margin-right: 5px;
 }
 
 .image-button img {
-  width: 50px;
-  height: 50px;
+    width: 50px;
+    height: 50px;
 }
 
 table {
-  width: 100%;
+    width: 100%;
 }
 
 .tableMyGoals {
-  display: flex;
-  justify-content: center;
-  margin-top: 30px;
-  margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 td {
-  font-size: 12px;
-  align-items: center;
+    font-size: 12px;
+    align-items: center;
+}
+
+#submitGoal {
+    display: flex;
+    margin: auto;
+    margin-top: 20px;
+    width: 68px;
+    justify-content: center;
 }
 
 tr {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 2px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 2px;
 }
 
 .tr_wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
 }
 
-.tr_wrapper:nth-child(even) {
-  background-color: #f2f2f2;
+.tr_wrapper:nth-child(odd) {
+    background-color: #f2f2f2;
 }
-
-
 
 td > input {
-  width: 28px;
+    width: 28px;
 }
 
 .formDiv {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  padding: 14px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 14px;
 }
 
-.formDiv>form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 1000px;
+.formDiv > form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 1000px;
 }
 
 .header-option {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-around;
 }
 
 .h1-space {
-  margin: 0 0 0 6px;
-  align-items: center;
-  font-family: "Segoe UI";
-  font-size: 18px;
-  display: flex;
+    margin-bottom: 4px;
+    font-size: 24px;
+    display: flex;
 }
 
 .tableChooseCategory .tbodyChooseCategory input {
-  width: 24px;
+    width: 24px;
 }
 
 .tableChooseCategory {
-  margin-top: 30px;
-  margin-bottom: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .tableChooseCategory th {
-  text-align: center;
-  font-size: 20px;
+    text-align: center;
+    font-size: 20px;
 }
 
 .tableChooseCategory img {
-  width: 139px;
-  height: 30px;
+    width: 139px;
+    height: 30px;
 }
 
 .headtitle-table {
-  font-weight: bold;
-  width: 80px;
+    font-weight: bold;
+    width: 80px;
 }
 
 .button-img-div {
-  margin-top: 25px;
-  display: flex;
-  justify-content: space-between;
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
 }
 
-.button-img-div>button {
-  border: none;
-  border-radius: 5px;
-  width: 80px;
-  font-size: 18px;
-  height: 30px;
+.button-img-div > button {
+    border: none;
+    border-radius: 5px;
+    width: 80px;
+    font-size: 18px;
+    height: 30px;
 }
 
 .imageMenu1 {
-  width: 200px;
-  height: 30px;
-  margin-left: 160px;
+    width: 200px;
+    height: 30px;
+    margin-left: 160px;
 }
 
 .form-timeline {
-  margin-bottom: 20px;
-  margin-left: 10px;
-  height: 30px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    height: 30px;
 }
 
 #form-timeline-chooseCategory {
-  margin-left: -32px;
-  height: 26px;
+    margin-left: -32px;
+    height: 26px;
 }
 
 .form-timeline-size {
-  height: 26px;
-  margin-right: 10px;
+    height: 26px;
+    margin-right: 10px;
 }
 
 #header-add-goals {
-  display: block;
+    display: block;
 }
 
 #submit-button {
-  margin-top: 20px;
-  height: 40px;
-  width: 100px;
+    margin-top: 20px;
+    height: 40px;
+    width: 100px;
 }
 
 #mod.show {
-  display: block;
+    display: block;
 }
 
 .lightbox-container {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 9999;
-  background-color: #fff;
-  max-width: 90%;
-  max-height: 90%;
-  width: auto;
-  height: auto;
+    position: fixed;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    background-color: #fff;
 }
 
 .overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Adjust the alpha value (0.5) to control the darkness */
-  z-index: 9998;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(
+        0,
+        0,
+        0,
+        0.5
+    ); /* Adjust the alpha value (0.5) to control the darkness */
+    z-index: 9998;
 }
 
 .lightbox-lightbox {
-  width: 464px;
-  height: 270px;
-  position: relative;
-  align-items: flex-start;
-  flex-shrink: 1;
-  background-color: rgba(255, 255, 255, 1);
+    width: 290px;
+    height: 280px;
+    position: relative;
+    background-color: rgba(255, 255, 255, 1);
 }
 
 .lightbox-button {
-  top: 181px;
-  left: 137px;
-  display: flex;
-  position: absolute;
-  align-items: flex-start;
-  flex-shrink: 1;
-  background-color: rgba(235, 235, 235, 1);
-
+    top: 202px;
+    left: 60px;
+    display: flex;
+    position: relative;
+    align-items: flex-start;
+    flex-shrink: 1;
+    background-color: rgba(235, 235, 235, 1);
 }
-  .lightbox-text {
-  top: 15px;
-  left: 72px;
-  color: rgba(0, 0, 0, 1);
-  height: auto;
-  position: absolute;
-  font-size: 20px;
-  font-weight: Bold;
-  text-align: left;
-  font-family: tahoma;
-  font-weight: 700;
-  line-height: normal;
-  font-stretch: normal;
-  text-decoration: none;
+.lightbox-text {
+    top: 15px;
+    left: 72px;
+    color: rgba(0, 0, 0, 1);
+    position: absolute;
+    font-family: tahoma;
+    text-decoration: none;
 }
 
 .lightbox-group28 {
-  top: 102.99934387207031px;
-  left: 48.000030517578125px;
-  width: 368.9998779296875px;
-  height: 41.000648498535156px;
-  display: flex;
-  position: absolute;
-  align-items: flex-start;
-  flex-shrink: 1;
+    top: 98px;
+    left: -6px;
+    width: 285px;
+    height: 41px;
+    position: absolute;
+    align-items: flex-start;
 }
 
 .lightbox-text2 {
-  top: 10.000648498535156px;
-  left: 51.9998779296875px;
-  color: rgba(0, 0, 0, 1);
-  height: auto;
-  position: absolute;
-  font-size: 22px;
-  font-weight: Bold;
-  text-align: left;
-  font-family: tahoma;
-  font-weight: 700;
-  line-height: normal;
-  font-stretch: normal;
-  text-decoration: none;
+    top: 10px;
+    left: 50px;
+    color: rgba(0, 0, 0, 1);
+    height: auto;
+    position: absolute;
+    font-size: 20px;
+    font-weight: Bold;
+    /* text-align: left; */
+    font-weight: 700;
+    font-family: tahoma;
+    line-height: normal;
+    font-stretch: normal;
+    text-decoration: none;
 }
 
 .lightbox-union {
-  top: 0px;
-  left: 26.234771728515625px;
-  width: 20px;
-  height: 37px;
-  position: absolute;
+    display: none;
+    top: 5px;
+    left: 20px;
+    width: 20px;
+    height: 37px;
+    position: absolute;
 }
 
 .lightbox-logo3 {
-  top: 5px;
-  left: 2px;
-  width: 104px;
-  height: 87px;
-  position: absolute;
+    top: 5px;
+    left: 2px;
+    width: 104px;
+    height: 87px;
+    position: absolute;
 }
 
-.footer-container{
-  display: none;
+.footer-container {
+    display: none;
 }
-  
+
 .nav-home.navlink {
-text-decoration: none;
+    text-decoration: none;
 }
 
 .green1 {
-  color: green;
+    color: green;
 }
 
 .orange {
-  color: orange;
+    color: orange;
 }
 
 .red {
-  color: red;
+    color: red;
 }
 
 #save-edit-goal-btn {
-  justify-content: center;
+    justify-content: center;
 }
 
 .my-goals-table {
-  margin-top: 20px;
-  flex-grow: 1;
-  height: 100%;
+    margin-top: 20px;
+    flex-grow: 1;
+    height: 100%;
 }
 
 .row-parent {
-  display: flex;
-  flex-wrap: wrap;
-  background-color: #f2f2f2;
-  width: 100%;
-  height: auto;
-  justify-content: space-between;
-  padding: 8px;
-  align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #f2f2f2;
+    width: 100%;
+    height: auto;
+    justify-content: space-between;
+    padding: 2px;
+    align-items: center;
+}
+
+#add-goal-btn:disabled {
+    opacity: 0.5;
 }
 
 .row-parent:nth-child(even) {
-  background-color: white;
+    background-color: white;
 }
 
 .td1 {
-  width: 68px;
-  display: flex;
-
+    min-width: 68px;
+    display: flex;
 }
 
 .td2 {
-  width: 78px;
-  display: flex;
+    display: flex;
+    min-width: 68px;
 }
 
 .td3 {
-  width: 92px;
-  display: flex;
+    min-width: 76px;
+    display: flex;
 }
 
 .td4 {
-  display: flex;
-  width: 82px;
+    display: flex;
+    width: 82px;
 }
 
 .text_speed_acc {
-  width: 36px;
+    width: 36px;
 }
 
-
-
-
-
-
 .my-goals-column1 {
-  max-width: 52%;
-  width: 52%;
+    max-width: 52%;
+    width: 52%;
 }
 
 .my-goals-goalTitle {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  font-weight: 900;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-weight: 900;
 }
 
 .my-goals-cols-2-4 {
-  display: flex;
-  order: 3;
-  width: 100%;
-  justify-content: space-between;
-  margin-top: 12px;
+    display: flex;
+    order: 3;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 12px;
 }
 
 .my-goals-column2 {
-  max-width: 33.3%;
-  width: 33.3%;
-  font-weight: bold;
-  color: #525151;
+    max-width: 34.3%;
+    width: 34.3%;
+    font-weight: bold;
+    color: #525151;
 }
 
 .my-goals-column3 {
-  width: 33.3%;
-
+    min-width: max-content;
 }
 
 .my-goals-column4 {
-  flex-grow: 2;
-  margin-left: 12px;
+    min-width: 66%;
 }
 
 .my-goals-column3-4 {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 
 .my-goals-column3-4-parent {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  justify-content: end;
-  width: -webkit-fill-available;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: end;
+    width: -webkit-fill-available;
 }
 
 .my-goals-cols-2-4-parent {
-  display: flex;
-  flex-grow: 0.6;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 100%;
-  order: 1;
-}
-
-.my-goals-column5 {
-  display: flex;
-}
-
-.my-goals-column6 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.my-goals-column6-val {
-  font-weight: bold;
-}
-
-.my-goals-edit {
-  margin: 0px 10px;
-  font-size: 16px;
-}
-
-.my-goals-edit:hover, .my-goals-delete:hover {
-  text-decoration: none;
-}
-
-.my-goals-delete {
-  margin-right: 10px;
-  font-size: 16px;
-}
-
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
-
-.wrapper-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-@media (min-width: 517px) {
-  .my-goals-column5 {
-    justify-content: end;
-    display: flex;
-    flex-grow: 1;
-    margin-right: 54px;
-  }
-
-  .row-parent {
-    padding: 14px;
-  }
-
-  .my-goals-edit {
-    margin-right: 32px;
-  }
-
-  .wrapper-head {
-    justify-content: space-around;
-  }
-
-  .my-goals-column6-val, .my-goals-goalTitle {
-    font-weight: 900 !important;
-    font-size: large;
-  }
-  .my-goals-column2 {
-    font-size: bold;
-  }
-
-  .my-goals-edit, .my-goals-delete {
-    font-size: 18px;
-  }
-
-  .headline {
-    font-size: 34px;
-  }
-
-  td{
-    font-size: 16px;
-  }
-
-  .text_speed_acc {
-    width: 50px;
-  }
-
-  .td1 {
-    width: 88px;
-  }
-
-  .td2 {
-    width: 122px;
-  }
-
-  .td3 {
-    width: 148px;
-  }
-
-  .td4 {
-    width: 108px;
-  }
-
-  .tr_wrapper {
-    padding: 12px 8px;
-  }
-
-  .headtitle-table {
-    width: 96px;
-  }
-
-  td > input {
-    width: 36px;
-  }
-}
-
-@media (min-width: 990px) {
-  .nav-container {
-   position: relative;
-  }
-  .header-container {
-    flex-direction: row-reverse; 
-    background-color: #46a546;
-    padding: 20px;
-  }
-
-  .header-option {
-    margin: 6px;
-  }
-  .logo {
-    width: 80px;
-    height: 80px;
-  }
-
-  .green {
-    background-color: transparent;
-    border-radius: 0;
-    border: hidden;
-    width: 60px;
-    height: 60px;
-    margin-left: 30px;
-  }
-
-  .tennis {
-    width: 125px;
-    height: 90px;
-  }
-
-  .margin {
-    margin-right: 10px;
-  }
-
-  .nav-mobile {
-    display: none;
-  }
-  
-  .nav-desktop {
-    display: block;
-  }
-
-  ul {
-    width: 50vw;
-    justify-content: space-between;
-  }
-
-  .text-home {
-    color: white;
-    font-size: 24px;
-    font-weight: bold;
-    font-family: "Tahoma";
-    display: inline-block;
-    padding: 6px 12px;
-  }
-
-  .text-home:hover {
-    background-color: #3d923d;
-    border-radius: 50px;
-    cursor: pointer;
-  }
-
-  .dropdown-menu {
-    width: 160px;
-  }
-
-  .btn.active, .btn:active {
-    box-shadow: none !important;
-  }
-
-  .btn {
-    color: rgb(255, 255, 255) !important;
-    background-color: transparent !important;
-    border-color: transparent !important;
-    font-size: 24px !important;
-    font-weight: 700 !important;
-    font-family: "Tahoma" !important;
-  }
-
-  .dropdown:hover {
-    background-color: #3d923d;
-    border-radius: 50px;
-    cursor: pointer;
-  }
-
-  .nav-home:hover {
-    background-color: #3d923d;
-    border-radius: 50px;
-    cursor: pointer;
-  }
-
-  .nav-menu>ul>li {
-    display: flex;
-  }
-
-  .headline {
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 50px;
-    font-size: 40px;
-  }
-
-  .image-button {
-    background-color: transparent;
-    border: none;
-    margin-right: 72px;
-    margin-top: 0px;
-    transform: scale(1);
-  }
-
-  .h1-space {
-    align-items: center;
-    font-size: 36px;
-  }
-  
-  .breadcrumb {
-    display: block;
-    width: 45%;
-    max-width: 45%;
-    background-color: transparent !important;
-    padding: 0px !important;
-    
-  }
-  
-  .breadcrumb-list {
-    display: flex;
-    padding: 0;
-    margin: 30px;
-    color: blue;
-  }
-  
-  .breadcrumb-item {
-    margin-right: 10px;
-    font-family: Helvetica;
-    font-weight: bold;
-    list-style-type: none;
-  }
-  
-  .breadcrumb-item:not(:last-child):after {
-    content: ">>";
-    margin-left: 10px;
-  }
-  
-  .breadcrumb-item:last-child {
-    font-weight: bold;
-  }
-  
-  .breadcrumb-item a {
-    color: inherit;
-    text-decoration: none;
-    list-style-type: none;
-  }
-  
-  .breadcrumb-item a:hover {
-    text-decoration: underline;
-  }
-  
-  .active {
-    color: black;
-  }
-
-  td {
-    font-size: 20px;
-    padding: 20px !important;
-  }
-
-  #date-myGoals {
-    margin-top: 0px;
-    height: 44px;
-    max-height: 48px;
-    width: 340px;
-    margin-left: 100px;
-  }
-
-  select.select-date {
-    font-size: 20px;
-  }
-
-  .form-timeline {
-    margin-bottom: 20px;
-    margin-left: 10px;
-  }
-
-  #form-timeline-chooseCategory {
-    height: 52px;
-  }
-
-  .form-timeline-size {
-    height: 52px;
-    margin-right: 3px;
-  }
-
-  .button-img-div>button {
-    margin-right: 224px;
-    border: none;
-    border-radius: 5px;
-    width: 100px;
-    font-size: 24px;
-    height: 40px;
-  }
-  
-  #nameOfGoal {
-    width: 600px;
-    font-size: 24px;
-  }
-
-  .form-Startdate-size {
-    margin-top: 10px;
-    font-size: 20px;
-  }
-
-  .form-nameofgoal-size {
-    font-size: 26px;
-  }
-
-  #form-goalName-size {
-    margin-top: 10px;
-  }
-
-  input[type="date"]#startDate #endDate {
-    width: 30%;
-    height: 100%;
-  }
-
-  #startDate {
-    font-size: 24px;
-  }
-
-  #endDate {
-    font-size: 24px;
-  }
-  
-  .lightbox-container {
-    max-width: 80%;
-  }
-
-  
-
-  .footer-container {
-    display: block;
-  }
-
-  .footer-footer {
-    width: 100%;
-    height: 360px;
-    display: flex;
-    background-color: rgba(246, 246, 246, 1);
-    padding: 24px;
-    align-items: center;
-    justify-content: space-around;
-    margin-top: 100px;
-  }
-
-  .footer-text {
-    color: rgba(176, 176, 176, 1);
-    font-size: 18px;
-    color: rgb(97, 96, 96);
-  }
-
-  .footer-text09 {
-    font-size: 18px;
-    text-align: left;
-    font-family: tahoma;
-    font-weight: 400;
-    text-decoration: none;
-  }
-
-  .footer-text16 {
-    font-size: 18px;
-    text-align: left;
-    font-family: tahoma;
-    font-weight: 400;
-    text-decoration: none;
-  }
-
-  .footer-text18 {
-    font-size: 18px;
-    text-align: left;
-    font-family: tahoma;
-    font-weight: 400;
-    text-decoration: none;
-    color: rgb(97, 96, 96);
-  }
-
-  .footer-text27 {
-    font-size: 22px;
-    text-align: left;
-    font-family: tahoma;
-    font-weight: bold;
-    text-decoration: none;
-    margin-bottom: 20px;
-  }
-
-  .footer-logo3 {
-    height: auto;
-    width: 200px;
-    margin-left: -16px;
-  }
-
-  .logo-description {
-    display: flex;
-    flex-direction: column;
-    width: 35%;
-  }
-  .social-about-links{
-    line-height: 40px;
-  }
-
-  .table-footer {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  .navlinks-color {
-    color: black;
-  }
-
-  .my-goals-cols-2-4 {
-    order: 0;
-    flex-grow: 1;
-    width: auto;
-  }
-
-  .my-goals-cols-2-4-parent {
     display: flex;
     flex-grow: 0.6;
     flex-direction: column;
     justify-content: space-around;
-    width: inherit;
+    width: 100%;
+    order: 1;
+}
 
-  }
-
-  .my-goals-column5 {
+.my-goals-column5 {
     display: flex;
-  }
+}
 
-  .row-parent {
-    padding: 16px;
-    align-items: start;
-  }
+.my-goals-column6 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-  .my-goals-edit {
-    margin: 0px 48px;
-    font-size: 24px;
-  }
-  
-  .my-goals-delete {
+.my-goals-column6-val {
+    font-weight: bold;
+}
+
+.my-goals-edit {
     margin-right: 10px;
-    font-size: 24px;
-  }
+    font-size: 16px;
+}
 
-  .wrapper-head {
+.my-goals-edit:hover,
+.my-goals-delete:hover {
+    text-decoration: none;
+}
+
+.my-goals-delete {
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.wrapper-head {
+    display: flex;
     justify-content: space-between;
-  }
+    align-items: center;
+}
 
-  .my-goals-column1 {
-    max-width: 37%;
-  }
+.my-table {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* padding: 18px; */
+}
 
-  .td1 {
-    width: 25%;
-  }
+.my-table td {
+    text-align: center;
+    padding: 10px !important;
+    font-size: 12px;
+    border: 1px solid #ddd; /* add border to the cells */
+    /* display: flex; */
+    justify-content: center;
+    min-height: 40px;
+}
 
-  .td2 {
-    width: 25%;
-  }
+td.column-actions {
+    padding: 0px !important;
+}
 
-  .td3 {
-    width: 31%;
-  }
+.column-name {
+    min-width: 28%; /* adjust as per your needs */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
-  .td4 {
-    width: 25%;
-  }
+th.column-birthdate,
+th.column-gender,
+th.column-team {
+    display: none !important;
+}
 
-  .text_speed_acc {
-    width: 64px;
-  }
+.column-birthdate {
+    min-width: 12%; /* adjust as per your needs */
+    max-width: 12%;
+    display: none;
+}
 
-  td > input {
-    width: 55px;
-    margin-right: 10px;
-  }
+.column-age {
+    min-width: 12%; /* adjust as per your needs */
+}
 
-  .headtitle-table {
-    width: 126px;
-  }
+.column-gender {
+    min-width: 8%; /* adjust as per your needs */
+    display: none;
+}
 
-  .tr_wrapper {
-    flex-wrap: nowrap;
-  }
+.column-potential {
+    min-width: 20%; /* adjust as per your needs */
+    display: flex;
+}
 
-  .headtitle-table-tr {
-    width: 288px;
-  }
+.column-team {
+    min-width: 16%; /* adjust as per your needs */
+    display: none;
+}
 
-  tr {
-    padding: 0px;
-  }
-  
+.column-actions {
+    min-width: 40%; /* adjust as per your needs */
+    max-height: 40px;
+}
+
+.my-table tr {
+    padding: 0;
+}
+
+.my-table th {
+    background-color: #ddd;
+    color: black; /* Set the text color to white for better visibility */
+    display: flex;
+    justify-content: center;
+    border: 1px solid #bcbcbc; /* add border to the cells */
+    font-size: 12px;
+}
+
+button.edit-btn a,
+button.delete-btn a {
+    text-decoration: underline !important;
+}
+
+.delete-btn a {
+    margin-left: 16px;
+}
+
+.edit-btn,
+.delete-btn {
+    padding: 0px 2px 2px 2px;
+    font-size: 11px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.sidenavcontent {
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+    padding: 10px;
+}
+
+.social_icons {
+    display: flex;
+    flex-direction: row;
+    margin-top: 26px;
+    margin-left: 20px;
+}
+
+.social_icon {
+    display: flex;
+    height: 32px;
+    margin: 10px;
+    background: white;
+    border-radius: 40%;
+
+}
+
+
+@media (min-width: 400px) {
+    .edit-btn,
+    .delete-btn {
+        padding: 0px 8px 2px 4px;
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 517px) {
+    .my-goals-column5 {
+        justify-content: end;
+        display: flex;
+        flex-grow: 1;
+        margin-right: 54px;
+    }
+
+    .row-parent {
+        width: 100%;
+        padding: 14px;
+    }
+
+    .my-goals-edit {
+        margin-right: 32px;
+    }
+
+    .my-goals-column4 {
+        min-width: 66%;
+    }
+
+    .wrapper-head {
+        justify-content: space-between;
+    }
+
+    .my-goals-column6-val,
+    .my-goals-goalTitle {
+        font-weight: 900 !important;
+        font-size: large;
+    }
+    .my-goals-column2 {
+        font-size: bold;
+    }
+
+    #date-myGoals {
+        width: 146px;
+    }
+
+    .my-goals-edit,
+    .my-goals-delete {
+        font-size: 18px;
+    }
+
+    .headline {
+        font-size: 34px;
+    }
+
+    td {
+        font-size: 16px;
+    }
+
+    .text_speed_acc {
+        width: 50px;
+    }
+
+    .td1 {
+        width: 88px;
+    }
+
+    .td2 {
+        min-width: 122px;
+    }
+
+    .td3 {
+        min-width: 100px;
+    }
+
+    .td4 {
+        width: 108px;
+    }
+
+    .tr_wrapper {
+        padding: 12px 8px;
+    }
+
+    .headtitle-table {
+        width: 96px;
+    }
+
+    td > input {
+        width: 36px;
+    }
+
+    .lightbox-lightbox {
+        width: 460px;
+        height: 340px;
+    }
+
+    .lightbox-button {
+        top: 82%;
+        left: 30%;
+    }
+    .lightbox-group28 {
+        top: 100px;
+        width: 420px;
+        position: absolute;
+    }
+
+    .lightbox-text2 {
+        top: 24px;
+        left: 84px;
+        color: rgba(0, 0, 0, 1);
+        position: absolute;
+        font-size: 24px;
+        font-weight: Bold;
+        font-family: tahoma;
+        text-decoration: none;
+    }
+
+    .lightbox-text {
+        top: 50%;
+        left: 72px;
+        color: rgba(0, 0, 0, 1);
+        font-size: 24px;
+        font-family: tahoma;
+        text-decoration: none;
+    }
+
+    .lightbox-union {
+        display: none;
+        top: 24px;
+        left: 42px;
+        width: 32px;
+        height: 32px;
+        position: absolute;
+    }
+
+    .column-name {
+        min-width: 20%;
+    }
+    .column-age {
+        min-width: 8%;
+    }
+    .column-potential {
+        min-width: 12%;
+    }
+    .column-team {
+        min-width: 24%;
+        display: block !important;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    th.column-team {
+        display: flex !important;
+    }
+    .column-actions {
+        min-width: 36%;
+    }
+    .edit-btn,
+    .delete-btn {
+        padding: 0px 10px 2px 10px;
+    }
+}
+
+@media (min-width: 650px) {
+    .my-table td {
+        font-size: 14px;
+        min-height: 46px;
+    }
+
+    .edit-btn,
+    .delete-btn {
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 990px) {
+    .nav-container {
+        position: relative;
+    }
+    .header-container {
+        flex-direction: row-reverse;
+        background-color: #46a546;
+        padding: 20px;
+    }
+    #hamburger {
+        display: none !important;
+    }
+
+    .header-option {
+        justify-content: normal;
+        margin: 6px;
+    }
+    .logo-tennis {
+        width: 112px;
+        height: 82px;
+    }
+
+    .profile {
+        width: 80px;
+        height: 80px;
+    }
+
+    .green {
+        background-color: transparent;
+        border-radius: 0;
+        border: hidden;
+        width: 70px;
+        height: 70px;
+        margin-left: 30px;
+    }
+
+    .tennis {
+        width: 125px;
+        height: 90px;
+    }
+
+    .margin {
+        margin-right: 10px;
+    }
+
+    .nav-mobile {
+        display: none;
+    }
+
+    .nav-desktop {
+        display: block;
+        margin-top: 16px;
+    }
+
+    ul {
+        width: 50vw;
+        justify-content: space-between;
+    }
+
+    .text-home {
+        color: white;
+        font-size: 24px;
+        font-weight: bold;
+        font-family: "Tahoma";
+        display: inline-block;
+        padding: 6px 12px;
+    }
+
+    .text-home:hover {
+        background-color: #3d923d;
+        border-radius: 50px;
+        cursor: pointer;
+    }
+
+    .dropdown-menu {
+        width: 160px;
+    }
+
+    .btn.active,
+    .btn:active {
+        box-shadow: none !important;
+    }
+
+    .btn {
+        color: rgb(255, 255, 255) !important;
+        background-color: transparent !important;
+        border-color: transparent !important;
+        font-size: 24px !important;
+        font-weight: 700 !important;
+        font-family: "Tahoma" !important;
+        text-decoration: none !important;
+    }
+
+    .dropdown:hover {
+        background-color: #3d923d;
+        border-radius: 50px;
+        cursor: pointer;
+    }
+
+    .nav-home:hover {
+        background-color: #3d923d;
+        border-radius: 50px;
+        cursor: pointer;
+    }
+
+    .nav-menu > ul > li {
+        display: flex;
+    }
+
+    .headline {
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 50px;
+        font-size: 40px;
+    }
+
+    .image-button {
+        background-color: transparent;
+        border: none;
+        margin-right: 15px;
+        margin-top: 0px;
+        transform: scale(1);
+    }
+
+    .h1-space {
+        align-items: center;
+        font-size: 36px;
+    }
+
+    .breadcrumb {
+        display: block;
+        background-color: transparent !important;
+        padding: 0px !important;
+    }
+
+    .breadcrumb-list {
+        display: flex;
+        padding: 0;
+        margin: 30px;
+        color: blue;
+    }
+
+    .breadcrumb-item {
+        margin-right: 10px;
+        font-family: Helvetica;
+        font-weight: bold;
+        list-style-type: none;
+    }
+
+    .breadcrumb-item:not(:last-child):after {
+        content: ">>";
+        margin-left: 10px;
+    }
+
+    .breadcrumb-item:last-child {
+        font-weight: bold;
+    }
+
+    .breadcrumb-item a {
+        color: inherit;
+        text-decoration: none;
+        list-style-type: none;
+    }
+
+    .breadcrumb-item a:hover {
+        text-decoration: underline;
+    }
+
+    .active {
+        color: black;
+    }
+
+    td {
+        font-size: 20px;
+        padding: 20px !important;
+    }
+
+    #date-myGoals {
+        margin-top: 0px;
+        height: 44px;
+        max-height: 48px;
+        width: 340px;
+        margin-left: 15px;
+    }
+
+    select.select-date {
+        font-size: 20px;
+    }
+
+    .form-timeline {
+        margin-bottom: 20px;
+        margin-left: 10px;
+    }
+
+    #form-timeline-chooseCategory {
+        height: 52px;
+    }
+
+    .form-timeline-size {
+        height: 52px;
+        margin-right: 3px;
+    }
+
+    .button-img-div > button {
+        margin-right: 224px;
+        border: none;
+        border-radius: 5px;
+        width: 100px;
+        font-size: 24px;
+        height: 40px;
+    }
+
+    #nameOfGoal {
+        width: 600px;
+        font-size: 24px;
+    }
+
+    .form-Startdate-size {
+        margin-top: 10px;
+        font-size: 20px;
+    }
+
+    .form-nameofgoal-size {
+        font-size: 26px;
+    }
+
+    #form-goalName-size {
+        margin-top: 10px;
+    }
+
+    input[type="date"]#startDate #endDate {
+        width: 30%;
+        height: 100%;
+    }
+
+    #startDate {
+        font-size: 24px;
+    }
+
+    #endDate {
+        font-size: 24px;
+    }
+
+    .lightbox-container {
+        max-width: 80%;
+    }
+
+    .footer-container {
+        display: block;
+    }
+
+    .footer-footer {
+        width: 100%;
+        height: 360px;
+        display: flex;
+        background-color: rgba(246, 246, 246, 1);
+        padding: 24px;
+        align-items: center;
+        justify-content: space-around;
+        margin-top: 160px;
+    }
+
+    .footer-text {
+        color: rgba(176, 176, 176, 1);
+        font-size: 18px;
+        color: rgb(97, 96, 96);
+    }
+
+    .footer-text09 {
+        font-size: 18px;
+        text-align: left;
+        font-family: tahoma;
+        font-weight: 400;
+        text-decoration: none;
+    }
+
+    .footer-text16 {
+        font-size: 18px;
+        text-align: left;
+        font-family: tahoma;
+        font-weight: 400;
+        text-decoration: none;
+    }
+
+    .footer-text18 {
+        font-size: 18px;
+        text-align: left;
+        font-family: tahoma;
+        font-weight: 400;
+        text-decoration: none;
+        color: rgb(97, 96, 96);
+    }
+
+    .footer-text27 {
+        font-size: 22px;
+        text-align: left;
+        font-family: tahoma;
+        font-weight: bold;
+        text-decoration: none;
+        margin-bottom: 20px;
+    }
+
+    .footer-logo3 {
+        height: auto;
+        width: 200px;
+        margin-left: -16px;
+    }
+
+    .logo-description {
+        display: flex;
+        flex-direction: column;
+        width: 35%;
+    }
+    .social-about-links {
+        line-height: 40px;
+    }
+
+    .table-footer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .navlinks-color {
+        color: black;
+    }
+
+    .my-goals-cols-2-4 {
+        order: 0;
+        flex-grow: 1;
+        width: auto;
+    }
+
+    .my-goals-cols-2-4-parent {
+        display: flex;
+        flex-grow: 0.6;
+        flex-direction: column;
+        justify-content: space-around;
+        width: inherit;
+    }
+
+    .my-goals-column5 {
+        display: flex;
+    }
+
+    .row-parent {
+        padding: 16px;
+        align-items: start;
+    }
+
+    .my-goals-edit {
+        margin: 0px 48px;
+        font-size: 24px;
+    }
+
+    .my-goals-delete {
+        margin-right: 10px;
+        font-size: 24px;
+    }
+
+    .wrapper-head {
+        justify-content: space-between;
+    }
+
+    .my-goals-column1 {
+        max-width: 37%;
+    }
+
+    .td1 {
+        width: 25%;
+    }
+
+    .td2 {
+        min-width: 19%;
+    }
+
+    .td3 {
+        width: 31%;
+    }
+
+    .td4 {
+        width: 25%;
+    }
+
+    .text_speed_acc {
+        width: 64px;
+    }
+
+    td > input {
+        width: 55px;
+        margin-right: 10px;
+    }
+
+    .headtitle-table {
+        width: 126px;
+    }
+
+    .tr_wrapper {
+        flex-wrap: nowrap;
+    }
+
+    .headtitle-table-tr {
+        width: 288px;
+    }
+
+    tr {
+        padding: 0px;
+    }
+
+    #submitGoal {
+        margin-top: 50px;
+        width: 122px;
+        font-size: 22px;
+    }
+
+    .my-table {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 18px;
+    }
+
+    .my-table td {
+        text-align: center;
+        padding: 10px !important;
+        font-size: 16px;
+        border: 1px solid #ddd; /* add border to the cells */
+        min-height: 50px;
+    }
+
+    .edit-btn,
+    .delete-btn {
+        padding: 0px 8px 0px 8px;
+        font-size: 16px;
+    }
+
+    td.column-actions {
+        padding: 0px !important;
+    }
+
+    .column-name {
+        min-width: 24%; /* adjust as per your needs */
+    }
+
+    .column-birthdate {
+        min-width: 10%; /* adjust as per your needs */
+        max-width: 10%;
+    }
+    td.column-birthdate,
+    td.column-gender,
+    td.column-team {
+        display: flex;
+    }
+
+    .column-age {
+        min-width: 4%; /* adjust as per your needs */
+    }
+
+    .column-gender {
+        min-width: 6%; /* adjust as per your needs */
+    }
+
+    .column-potential {
+        min-width: 8%; /* adjust as per your needs */
+    }
+
+    .column-team {
+        min-width: 20%; /* adjust as per your needs */
+    }
+
+    .column-actions {
+        min-width: 28%; /* adjust as per your needs */
+        max-height: 46px;
+    }
+    .my-table th {
+        background-color: #ddd;
+        color: black; /* Set the text color to white for better visibility */
+        display: flex;
+        justify-content: center;
+        border: 1px solid #bcbcbc; /* add border to the cells */
+    }
+
+    th.column-birthdate,
+    th.column-gender,
+    th.column-team {
+        display: flex !important;
+    }
+}
+
+.progress {
+    width: 81px;
 }
