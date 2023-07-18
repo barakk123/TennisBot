@@ -1,7 +1,6 @@
 <?php
 include "db.php";
-
-session_start();
+include_once 'common/verify.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $_SESSION["goal_name"] = $_POST["name"];

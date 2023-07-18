@@ -1,7 +1,12 @@
 function validateInput(inputId) {
     const input = document.getElementById(inputId);
+    input.setAttribute("touched", "true");
 
-    if (
+    if (input.min && input.max && Number(input.min) >= Number(input.max)) {
+        input.setCustomValidity(
+            `The value is invalid as it's grather than the max value or equal to the current skill value`
+        );
+    } else if (
         (input.value && Number(input.value) < Number(input.min)) ||
         (input.max && Number(input.value) > Number(input.max))
     ) {
@@ -23,7 +28,9 @@ function mysqlDateToHuman(date) {
 
 function openLightbox(status, message, redirect) {
     const lightbox = document.getElementById("mod");
-    lightbox?.setAttribute("redirect", redirect);
+    if (!!redirect) {
+        lightbox?.setAttribute("redirect", redirect);
+    }
     if (lightbox && status && message) {
         lightbox.querySelector(".lightbox-text2 span").innerText = message;
         if (status === "success") {

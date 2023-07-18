@@ -16,6 +16,10 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 });
 
+function hasChanges() {
+    return document.querySelectorAll("input[touched=true]").length > 0;
+}
+
 function loadGoal() {
     const goalId = document.querySelector("#goal-id").value;
     if (goalId) {
@@ -28,13 +32,20 @@ function loadGoal() {
             .then((response) => response.json())
             .then((data) => {
                 const selectElement = document.getElementById("date-myGoals");
-                const firstOption = selectElement.querySelector("option");
-                updateStrikeList(firstOption.value, goalId);
+                const selectedCategory =
+                    sessionStorage.getItem("selectedCategory");
+                if (selectedCategory) {
+                    selectElement.value = selectedCategory;
+                    updateStrikeList(selectedCategory, goalId);
+                } else {
+                    const firstOption = selectElement.querySelector("option");
+                    updateStrikeList(firstOption.value, goalId);
+                }
             });
     }
 }
 
-function updateStrikeList(category, goalId) {
+function getStrikesByCategory(category, goalId) {
     fetch(
         `getStrikesByCategory.php?category=${category}&update=true&goal_id=${goalId}`
     )
@@ -90,7 +101,10 @@ function updateStrikeList(category, goalId) {
 
                 let skillCellElement = document.createElement("td");
                 skillCellElement.className = `td${currentCol + 1}`;
-                let skillValueNumber = Number(strike.skill_min_value);
+
+                let skillValueNumber = strike.skill_min_value
+                    ? Number(strike.skill_min_value)
+                    : null;
                 let skillTargetValueNumber = strike.skill_target_value
                     ? Number(strike.skill_target_value)
                     : null;
@@ -103,14 +117,44 @@ function updateStrikeList(category, goalId) {
                 }
 
                 if (currentCol === 1) {
-                    skillCellElement.innerHTML = `<div class="text_speed_acc">${skillValueNumber} -></div><input id="s${
-                        index + 1
-                    }" type="number" min="${
-                        skillValueNumber + 1
-                    }" max="100" oninput="validateInput('s${
-                        index + 1
-                    }')" value="${skillTargetValueNumber}">${sign}`;
-                } else {
+                    if (skillTargetValueNumber) {
+                        if (skillValueNumber + 1 >= 100) {
+                            skillCellElement.innerHTML = `<div class="text_speed_acc">${skillValueNumber} -></div><input id="s${
+                                index + 1
+                            }" type="number" min="${
+                                skillValueNumber + 1
+                            }" max="100" oninput="validateInput('s${
+                                index + 1
+                            }')" value="${skillTargetValueNumber}" disabled>${sign}`;
+                        } else {
+                            skillCellElement.innerHTML = `<div class="text_speed_acc">${skillValueNumber} -></div><input id="s${
+                                index + 1
+                            }" type="number" min="${
+                                skillValueNumber + 1
+                            }" max="100" oninput="validateInput('s${
+                                index + 1
+                            }')" value="${skillTargetValueNumber}">${sign}`;
+                        }
+                    } else {
+                        if (skillValueNumber + 1 >= 100) {
+                            skillCellElement.innerHTML = `<div class="text_speed_acc">${skillValueNumber} -></div><input id="s${
+                                index + 1
+                            }" type="number" min="${
+                                skillValueNumber + 1
+                            }" max="100" oninput="validateInput('s${
+                                index + 1
+                            }')" disabled>${sign}`;
+                        } else {
+                            skillCellElement.innerHTML = `<div class="text_speed_acc">${skillValueNumber} -></div><input id="s${
+                                index + 1
+                            }" type="number" min="${
+                                skillValueNumber + 1
+                            }" max="100" oninput="validateInput('s${
+                                index + 1
+                            }')">${sign}`;
+                        }
+                    }
+                } else if (skillTargetValueNumber) {
                     skillCellElement.innerHTML = `<div class="text_speed_acc">${skillValueNumber} -></div><input id="s${
                         index + 1
                     }" type="number" min="${
@@ -118,6 +162,12 @@ function updateStrikeList(category, goalId) {
                     }" oninput="validateInput('s${
                         index + 1
                     }')" value="${skillTargetValueNumber}">${sign}`;
+                } else {
+                    skillCellElement.innerHTML = `<div class="text_speed_acc">${skillValueNumber} -></div><input id="s${
+                        index + 1
+                    }" type="number" min="${
+                        skillValueNumber + 1
+                    }" oninput="validateInput('s${index + 1}')">${sign}`;
                 }
                 dataRowElement.appendChild(skillCellElement);
 
@@ -141,8 +191,104 @@ function updateStrikeList(category, goalId) {
         });
 }
 
+function updateStrikeList(category, goalId) {
+    sessionStorage.setItem("selectedCategory", category);
+    if (hasChanges()) {
+        if (
+            confirm(
+                "You have unsaved changes, would you like to save your changes before?"
+            )
+        ) {
+            submitChangesBeforeUpdateStrikeList(category, goalId);
+        }
+    } else {
+        getStrikesByCategory(category, goalId);
+    }
+}
+
+function submitChangesBeforeUpdateStrikeList(category, goalId) {
+    let categories = [];
+    let tbodys = document.querySelectorAll(".tr_wrapper");
+
+    tbodys.forEach((tbody) => {
+        let subcategories = [];
+        const tr = tbody.querySelector("tr:nth-of-type(2)");
+        if (tr) {
+            if (
+                tr.querySelector(".td1") &&
+                tr.querySelector(".td2 .text_speed_acc")
+            ) {
+                subcategories.push({
+                    name: tr.querySelector(".td1").innerText,
+                    current: Number(
+                        tr
+                            .querySelector(".td2 .text_speed_acc")
+                            .innerHTML.split(" ")[0]
+                    ),
+                    target: tr.querySelector(".td2 input").value
+                        ? Number(tr.querySelector(".td2 input").value)
+                        : null,
+                });
+            }
+
+            if (
+                tr.querySelectorAll(".td2")[1] &&
+                tr.querySelector(".td3 .text_speed_acc")
+            ) {
+                subcategories.push({
+                    name: tr.querySelectorAll(".td2")[1].innerText,
+                    current: Number(
+                        tr
+                            .querySelector(".td3 .text_speed_acc")
+                            .innerHTML.split(" ")[0]
+                    ),
+                    target: tr.querySelector(".td3 input").value
+                        ? Number(tr.querySelector(".td3 input").value)
+                        : null,
+                });
+            }
+        }
+
+        categories.push({
+            name: tbody.querySelector(".headtitle-table-tr .headtitle-table")
+                .innerText,
+            subcategories,
+        });
+    });
+
+    if (categories.some((c) => c.subcategories?.length > 0)) {
+        let goal = {
+            goalId,
+            categories,
+        };
+
+        // Send the goal data to the server
+        fetch("updateGoalCategories.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(goal),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.error) {
+                    openLightbox("error", data.error, null);
+                } else {
+                    openLightbox("success", "Goal updated successfully!", null);
+                    getStrikesByCategory(category, goalId);
+                }
+            });
+    } else {
+        openLightbox("error", "You must fill at least one goal!", null);
+    }
+}
+
 document.forms[0].addEventListener("submit", function (event) {
     event.preventDefault();
+    const submit_btn = document.querySelector("#submitGoal");
+    submit_btn.setAttribute("disabled", "true");
+
     const goalId = document.querySelector("#goal-id").value;
 
     let categories = [];
@@ -217,6 +363,7 @@ document.forms[0].addEventListener("submit", function (event) {
                         `edit_goal_categories.php?id=${goalId}`
                     );
                 } else {
+                    sessionStorage.clear();
                     openLightbox(
                         "success",
                         "Goal updated successfully!",

@@ -1,13 +1,23 @@
 <?php
     include "db.php";
+    include_once 'common/verify.php';
 
-    session_start();
+    $user_type = $_SESSION['user_type'];
 
-    if (!isset($_SESSION["user_id"])) {
+
+    if(!isset($_SESSION["user_id"])) {
         header("Location: login.php");
+        exit;}
+    if ($user_type == 'Trainee') {
+        header("Location: index.php");
         exit;
-    }
+        }
+        
 ?>
+
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,6 +37,7 @@
 
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <?php include_once 'common/nav.php'; ?>
 
@@ -36,4 +47,5 @@
     <script src="./js/trainees_list.js"></script>
     <script src="./js/global.js"></script>
 </body>
+
 </html>

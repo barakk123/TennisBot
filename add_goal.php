@@ -1,13 +1,6 @@
 <?php
-session_start();
-if(!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])){
-    //redirect to login or error page
-    header("Location: login.php");
-    exit;
-}
-$user_id = $_SESSION['user_id'];
+    include_once 'common/verify.php';
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">

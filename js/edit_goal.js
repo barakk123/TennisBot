@@ -1,11 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const startDateInput = document.getElementById("startDate");
-    startDateInput.min = getMinDate();
-    const endDateInput = document.getElementById("endDate");
-    endDateInput.min = startDateInput.min;
-    startDateInput.addEventListener("input", () => {
-        endDateInput.min = startDateInput.value;
-    });
     loadGoal();
 });
 
@@ -38,6 +31,15 @@ function loadGoal() {
                 document.getElementById("nameOfGoal").value = data.title;
                 document.getElementById("startDate").value = data.start_date;
                 document.getElementById("endDate").value = data.end_date;
+
+                const startDateInput = document.getElementById("startDate");
+                startDateInput.min = data.start_date;
+
+                const endDateInput = document.getElementById("endDate");
+                endDateInput.min = data.start_date;
+                startDateInput.addEventListener("input", () => {
+                    endDateInput.min = startDateInput.value;
+                });
             });
     }
 }

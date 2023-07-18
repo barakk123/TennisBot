@@ -1,12 +1,6 @@
 <?php
     include "db.php";
-
-    session_start();
-
-    if (!isset($_SESSION["user_id"])) {
-        header("Location: login.php");
-        exit;
-    }
+    include_once 'common/verify.php';
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +21,10 @@
 
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <?php include_once 'common/nav.php'; ?>
     <?php include_once 'common/footer.php'; ?>
+
+    <script src="js/global.js"></script>
 </body>

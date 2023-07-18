@@ -88,7 +88,7 @@ async function deleteGoal(id) {
 }
 
 function createGoalElement(goal) {
-    const progressCurrentValue = getProgress(goal);
+    let progressCurrentValue = getProgress(goal);
 
     let goalRowParentElement = document.createElement("div");
     goalRowParentElement.className = "row-parent";
@@ -156,6 +156,7 @@ function createGoalElement(goal) {
         statusElement.innerText = "Failed";
         statusElement.style.color = "red";
         progresscolor = "bg-danger";
+        progressCurrentValue = 100;
     } else if (progressCurrentValue === 100) {
         statusElement.innerText = "Completed";
         statusElement.style.color = "green";
@@ -228,25 +229,31 @@ function createSubcategoryElement(subcategory) {
 // Fetch goals & skills on page load
 fetchGoals();
 
-
 function getProgress(goal) {
     let count = 0;
     let progress = 0;
-    Array.from(goal.categories.map((c) => c.subcategories)).forEach((sub) => {
-        sub.forEach((s) => {
+
+    Array.from(goal.categories).forEach((c) => {
+        c.subcategories.forEach((s) => {
             const start = +s.current;
             const target = +s.target;
             const current = +skills.find(
-                (skill) => skill.subcategory_name === s.name  // חסר פה וגם: קטגורי איידי של סקילס להשוות עם קט' איידי של סאבקטגוריס טסט
+                (skill) =>
+                    skill.subcategory_name === s.name &&
+                    c.name === skill.category_name
             )?.skill_value;
-             console.log(
-                 `Sub category: ${s.name}, start: ${start}, current: ${current}, target: ${target}`
+            console.log(
+                `Sub category: ${s.name}, start: ${start}, current: ${current}, target: ${target}`
             );
-            let sProgress = ((current - start) / (target - start)) * 100;
+            let sProgress = Math.min(
+                ((current - start) / (target - start)) * 100,
+                100
+            );
             count++;
-            progress += sProgress;
+            progress += isNaN(sProgress) ? 100 : sProgress;
         });
     });
+
     const result = +(progress / count).toFixed(0);
     return result > 100 ? 100 : result;
 }

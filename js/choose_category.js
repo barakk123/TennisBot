@@ -12,12 +12,37 @@ document.addEventListener("DOMContentLoaded", function () {
                 selectElement.appendChild(optionElement);
             });
 
-            const firstOption = selectElement.querySelector("option");
-            updateStrikeList(firstOption.value);
+            const selectedCategory = sessionStorage.getItem("selectedCategory");
+            if (selectedCategory) {
+                selectElement.value = selectedCategory;
+                updateStrikeList(selectedCategory);
+            } else {
+                const firstOption = selectElement.querySelector("option");
+                updateStrikeList(firstOption.value);
+            }
         });
 });
 
+function hasChanges() {
+    return document.querySelectorAll("input[touched=true]").length > 0;
+}
+
 function updateStrikeList(category) {
+    sessionStorage.setItem("selectedCategory", category);
+    if (hasChanges()) {
+        if (
+            confirm(
+                "You have unsaved changes, would you like to save your changes before?"
+            )
+        ) {
+            submitChangesBeforeUpdateStrikeList(category);
+        }
+    } else {
+        getStrikesByCategory(category);
+    }
+}
+
+function getStrikesByCategory(category) {
     fetch(`getStrikesByCategory.php?category=${category}`)
         .then((response) => response.json())
         .then((data) => {
@@ -81,13 +106,23 @@ function updateStrikeList(category) {
                 }
 
                 if (currentCol === 1) {
-                    skillCellElement.innerHTML = `<div class="text_speed_acc">${skillValueNumber} -></div><input id="s${
-                        index + 1
-                    }" type="number" min="${
-                        skillValueNumber + 1
-                    }" max="100" oninput="validateInput('s${
-                        index + 1
-                    }')">${sign}`;
+                    if (skillValueNumber + 1 >= 100) {
+                        skillCellElement.innerHTML = `<div class="text_speed_acc">${skillValueNumber} -></div><input id="s${
+                            index + 1
+                        }" type="number" min="${
+                            skillValueNumber + 1
+                        }" max="100" oninput="validateInput('s${
+                            index + 1
+                        }')" disabled>${sign}`;
+                    } else {
+                        skillCellElement.innerHTML = `<div class="text_speed_acc">${skillValueNumber} -></div><input id="s${
+                            index + 1
+                        }" type="number" min="${
+                            skillValueNumber + 1
+                        }" max="100" oninput="validateInput('s${
+                            index + 1
+                        }')">${sign}`;
+                    }
                 } else {
                     skillCellElement.innerHTML = `<div class="text_speed_acc">${skillValueNumber} -></div><input id="s${
                         index + 1
@@ -117,8 +152,96 @@ function updateStrikeList(category) {
         });
 }
 
+function submitChangesBeforeUpdateStrikeList(category) {
+    const title = document.querySelector("#goal_name").value;
+    const start_date = document.querySelector("#start_date").value;
+    const end_date = document.querySelector("#end_date").value;
+    const coach_id = document.querySelector("#coach_id").value;
+
+    let categories = [];
+    let tbodys = document.querySelectorAll(".tr_wrapper");
+
+    tbodys.forEach((tbody) => {
+        let subcategories = [];
+        const tr = tbody.querySelector("tr:nth-of-type(2)");
+
+        if (
+            tr?.querySelector(".td2 input")?.value &&
+            tr?.querySelector(".td1")
+        ) {
+            subcategories.push({
+                name: tr.querySelector(".td1").innerText,
+                current: Number(
+                    tr
+                        .querySelector(".td2 .text_speed_acc")
+                        .innerHTML.split(" ")[0]
+                ),
+                target: Number(tr.querySelector(".td2 input").value),
+            });
+        }
+
+        if (
+            tr?.querySelector(".td3 input")?.value &&
+            tr?.querySelectorAll(".td2")[1]
+        ) {
+            subcategories.push({
+                name: tr.querySelectorAll(".td2")[1].innerText,
+                current: Number(
+                    tr
+                        .querySelector(".td3 .text_speed_acc")
+                        .innerHTML.split(" ")[0]
+                ),
+                target: Number(tr.querySelector(".td3 input").value),
+            });
+        }
+
+        categories.push({
+            name: tbody.querySelector(".headtitle-table-tr .headtitle-table")
+                .innerText,
+            subcategories,
+        });
+    });
+
+    if (categories.some((c) => c.subcategories?.length > 0)) {
+        let goal = {
+            title,
+            start_date,
+            end_date,
+            coach_id,
+            categories,
+        };
+
+        // Send the goal data to the server
+        fetch("saveGoals.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(goal),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.error) {
+                    openLightbox("error", data.error, null);
+                } else {
+                    const goalId = data.goal_id;
+                    openLightbox(
+                        "success",
+                        "Goal saved successfully!",
+                        `edit_goal_categories.php?id=${goalId}`
+                    );
+                }
+            });
+    } else {
+        openLightbox("error", "You must fill at least one goal!", null);
+    }
+}
+
 document.forms[0].addEventListener("submit", function (event) {
     event.preventDefault();
+
+    const submit_btn = document.querySelector("#submitGoal");
+    submit_btn.setAttribute("disabled", "true");
 
     const title = document.querySelector("#goal_name").value;
     const start_date = document.querySelector("#start_date").value;
@@ -191,6 +314,7 @@ document.forms[0].addEventListener("submit", function (event) {
                 if (data.error) {
                     openLightbox("error", data.error, "choose_category.php");
                 } else {
+                    sessionStorage.clear();
                     openLightbox(
                         "success",
                         "Goal saved successfully!",

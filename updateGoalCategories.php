@@ -12,15 +12,16 @@ $user_id = $_SESSION["user_id"];
 $goal = json_decode(file_get_contents('php://input'), true);
 
 foreach ($goal['categories'] as $category) {
+    $goalId = $goal['goalId'];
     $category_id = getCategoryID($category['name']);
-    $sql = "SELECT * FROM tbl_210_categories_test WHERE goal_id = $goal_id AND category_id = $category_id";
+    $sql = "SELECT * FROM tbl_210_categories_test WHERE goal_id = $goalId AND category_id = $category_id";
     $result = $connection->query($sql);
     if ($result->num_rows == 0) {
         $stmt = $connection->prepare("
             INSERT INTO tbl_210_categories_test (goal_id, category_id)
             VALUES (?, ?)
         ");
-        $stmt->bind_param('ii', $goal_id, $category_id);
+        $stmt->bind_param('ii', $goalId, $category_id);
         if ($stmt->execute()) {
             $categories_test_id = $connection->insert_id;
         }

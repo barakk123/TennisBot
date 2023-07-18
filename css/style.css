@@ -655,7 +655,7 @@ td.column-actions {
 }
 
 .column-name {
-    min-width: 28%; /* adjust as per your needs */
+    min-width: 25%; /* adjust as per your needs */
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -674,7 +674,7 @@ th.column-team {
 }
 
 .column-age {
-    min-width: 12%; /* adjust as per your needs */
+    min-width: 13%; /* adjust as per your needs */
 }
 
 .column-gender {
@@ -683,7 +683,7 @@ th.column-team {
 }
 
 .column-potential {
-    min-width: 20%; /* adjust as per your needs */
+    min-width: 22%; /* adjust as per your needs */
     display: flex;
 }
 
@@ -748,8 +748,210 @@ button.delete-btn a {
     margin: 10px;
     background: white;
     border-radius: 40%;
-
 }
+
+/* add new profile css:*/
+
+.big_container {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile_details_pic {
+    display: flex;
+    flex-direction: row;
+}
+
+.profile_pic {
+    display: flex;
+    width: 52px;
+    height: 52px;
+}
+
+.profile_details {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile_union_contact_notic {
+    display: flex;
+    flex-direction: column;
+}
+
+/* add new login css:*/
+
+.form-group {
+    width: 100%;
+    padding: 0px 32px 24px 0px;
+}
+
+.login_button {
+    display: flex;
+    margin-top: 28px;
+    width: 200px;
+    height: 100px;
+    font-size: 32px;
+    justify-content: center;
+    align-items: center;
+    background-color: #3d923d;
+    color: #ffffff;
+    border-radius: 10%;
+}
+
+.login_title {
+    margin-top: 90px;
+    margin-bottom: 38px;
+    font-size: 100px;
+}
+
+#registerName.form-control,
+#registerPass.form-control {
+    height: 80px;
+    font-size: 38px;
+}
+
+#loginName.form-control,
+#loginPass.form-control {
+    height: 80px;
+    font-size: 38px;
+}
+
+.login_name_pass {
+    font-size: 48px;
+}
+
+div.error-message {
+    font-size: 36px;
+    color: red;
+    margin-top: 40px;
+}
+
+.register_button {
+    position: sticky;
+    display: flex;
+    margin-top: 28px;
+    width: 200px;
+    height: 100px;
+    font-size: 32px;
+    justify-content: center;
+    align-items: center;
+    background-color: #00000098;
+    color: #ffffff;
+    border-radius: 10%;
+    left: 62%;
+}
+
+.login_sub_reg {
+    display: flex;
+    flex-direction: row;
+}
+
+.profile_details > h2,
+.profile_union > h2,
+.profile_contact > h2 {
+    margin-top: 16px;
+    margin-left: 10px;
+}
+
+.data {
+    margin-left: 10px;
+}
+
+.logout-button {
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.menu-container {
+    display: block;
+}
+
+.logout-button-pc {
+    display: none;
+}
+
+.logout-button-ham {
+    margin-top: 100px;
+    color: #001fc8 !important;
+    font-size: 19px !important;
+    font-weight: bold !important;
+    font-family: "Tahoma";
+}
+
+.height-weight {
+    display: flex;
+    flex-direction: row;
+}
+
+#form-height,
+#form-weight {
+    width: 50%;
+    font-size: 36px;
+}
+
+.form-control {
+    font-size: 30px;
+    height: 70px;
+}
+
+#profileForm > .form-group > label {
+    font-size: 36px;
+}
+
+#form-gender-pick {
+    font-size: 30px;
+}
+
+.container > .title {
+    margin-top: 25px;
+    margin-bottom: 50px;
+    font-size: 50px;
+}
+
+#profileForm > h2 {
+    font-size: 42px;
+}
+
+
+.profile-image {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-top: 10px;
+}
+
+.fileInputWrapper {
+    height: 32px;
+    width: 64px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    /*Using a background color, but you can use a background image to represent a button*/
+    background-color: #ddf;
+}
+.fileInput {
+    cursor: pointer;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 99;
+    /*This makes the button huge. If you want a bigger button, increase the font size*/
+    font-size: 50px;
+    /*Opacity settings for all browsers*/
+    opacity: 0;
+    -moz-opacity: 0;
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+}
+
+.profile_details_pic_wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
 
 
 @media (min-width: 400px) {
@@ -761,6 +963,36 @@ button.delete-btn a {
 }
 
 @media (min-width: 517px) {
+    .height-weight {
+        display: flex;
+        flex-direction: row;
+    }
+
+    #form-height,
+    #form-weight {
+        width: 50%;
+        font-size: 42px;
+    }
+
+    .form-control {
+        font-size: 30px;
+        height: 70px;
+    }
+
+    #profileForm > .form-group > label {
+        font-size: 42px;
+    }
+
+    #form-gender-pick {
+        font-size: 30px;
+    }
+
+    .container > .title {
+        margin-top: 25px;
+        margin-bottom: 50px;
+        font-size: 50px;
+    }
+
     .my-goals-column5 {
         justify-content: end;
         display: flex;
@@ -894,10 +1126,10 @@ button.delete-btn a {
         min-width: 8%;
     }
     .column-potential {
-        min-width: 12%;
+        min-width: 14%;
     }
     .column-team {
-        min-width: 24%;
+        min-width: 22%;
         display: block !important;
         white-space: nowrap;
         overflow: hidden;
@@ -931,11 +1163,31 @@ button.delete-btn a {
     .nav-container {
         position: relative;
     }
+
+    .menu-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .logout-button-pc {
+        display: flex;
+    }
+
+    .logout-button {
+        text-decoration: none;
+        margin-left: 36px;
+        margin-right: 15px;
+        font-size: 19px;
+        font-weight: bold;
+        font-family: "Tahoma";
+    }
+
     .header-container {
         flex-direction: row-reverse;
         background-color: #46a546;
         padding: 20px;
     }
+
     #hamburger {
         display: none !important;
     }
@@ -1383,7 +1635,7 @@ button.delete-btn a {
     }
 
     .column-age {
-        min-width: 4%; /* adjust as per your needs */
+        min-width: 6%; /* adjust as per your needs */
     }
 
     .column-gender {
@@ -1399,7 +1651,7 @@ button.delete-btn a {
     }
 
     .column-actions {
-        min-width: 28%; /* adjust as per your needs */
+        min-width: 26%; /* adjust as per your needs */
         max-height: 46px;
     }
     .my-table th {
@@ -1415,8 +1667,26 @@ button.delete-btn a {
     th.column-team {
         display: flex !important;
     }
+
+    h2.title>.my-goals-edit{
+        margin: 0px 18px;
+    }
 }
 
 .progress {
     width: 81px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

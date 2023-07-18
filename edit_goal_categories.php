@@ -1,14 +1,8 @@
 <?php
 include "db.php";
+include_once 'common/verify.php';
 
-session_start();
-
-if(!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])){
-    //redirect to login or error page
-    header("Location: login.php");
-    exit;
-}
-else if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id']) && !empty($_GET['id'])) {
+if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id']) && !empty($_GET['id'])) {
     $goalId = $_GET["id"];
 }
 else {

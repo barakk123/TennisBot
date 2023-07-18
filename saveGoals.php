@@ -81,5 +81,5 @@ function getSubcategoryID($subcategory_name) {
     return $row['id'];
 }
 
-echo json_encode(['message' => 'Goal saved successfully']);
+echo json_encode(['message' => 'Goal saved successfully', 'goal_id' => $goal_id]);
 $connection->close();
