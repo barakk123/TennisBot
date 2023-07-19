@@ -782,7 +782,7 @@ button.delete-btn a {
 
 .form-group {
     width: 100%;
-    padding: 0px 32px 24px 0px;
+    padding: 0px 28px 8px 0px;
 }
 
 .login_button {
@@ -886,49 +886,45 @@ div.error-message {
 #form-height,
 #form-weight {
     width: 50%;
-    font-size: 36px;
+    font-size: 18px;
 }
 
 .form-control {
-    font-size: 30px;
-    height: 70px;
+    font-size: 16px;
+    height: 50px;
 }
 
 #profileForm > .form-group > label {
-    font-size: 36px;
+    font-size: 18px;
 }
 
 #form-gender-pick {
-    font-size: 30px;
+    font-size: 18px;
 }
 
 .container > .title {
-    margin-top: 25px;
-    margin-bottom: 50px;
-    font-size: 50px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    font-size: 22px;
 }
 
 #profileForm > h2 {
-    font-size: 42px;
+    font-size: 26px;
+    margin-bottom: 16px;
+    margin-top: 10px;
 }
 
 
 .profile-image {
     width: 100px;
     height: 100px;
-    object-fit: contain;
     margin-top: 10px;
+    border-radius: 50%;
+    overflow: hidden;
+    object-fit: cover;
+    margin-left: 10px;
 }
 
-.fileInputWrapper {
-    height: 32px;
-    width: 64px;
-    overflow: hidden;
-    position: relative;
-    cursor: pointer;
-    /*Using a background color, but you can use a background image to represent a button*/
-    background-color: #ddf;
-}
 .fileInput {
     cursor: pointer;
     height: 100%;
@@ -952,7 +948,22 @@ div.error-message {
     gap: 10px;
 }
 
+.login-button {
+    margin-top: 20px;
+    height: 40px;
+    width: 100px;
+    margin-bottom: 24px;
+}
 
+.fileInputWrapper {
+    color: white;
+    background-color: green;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    width: 64px;
+    margin-left: 10px;
+}
 
 @media (min-width: 400px) {
     .edit-btn,
@@ -971,26 +982,26 @@ div.error-message {
     #form-height,
     #form-weight {
         width: 50%;
-        font-size: 42px;
+        font-size: 24px;
     }
 
     .form-control {
-        font-size: 30px;
-        height: 70px;
+        font-size: 22px;
+        height: 60px;
     }
 
     #profileForm > .form-group > label {
-        font-size: 42px;
+        font-size: 24px;
     }
 
     #form-gender-pick {
-        font-size: 30px;
+        font-size: 24px;
     }
 
     .container > .title {
         margin-top: 25px;
-        margin-bottom: 50px;
-        font-size: 50px;
+        margin-bottom: 22px;
+        font-size: 34px;
     }
 
     .my-goals-column5 {

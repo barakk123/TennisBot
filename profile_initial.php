@@ -86,14 +86,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
     <div class="container">
-        <h1 class="title">Please share more about you</h1>
+        
         <form action="profile_initial.php" method="post" id="profileForm">
+            <h1 class="title">Please share more about you</h1>
             <h2>Personal Details</h2>
             <div class="form-group">
                 <label for="full_name">Full Name: </label>
                 <input type="text" class="form-control" required
                     pattern="([a-zA-Z]{2,}-[a-zA-Z]{2,}|[a-zA-Z]{2,}) ([a-zA-Z]{2,}-[a-zA-Z]{2,}|[a-zA-Z]{2,})"
-                    name="full_name" id="full_name" placeholder="Enter Full Name" maxlength="30">
+                    name="full_name" id="full_name" placeholder="Enter full name" maxlength="30">
             </div>
             <div class="form-group">
                 <label for="birth_date">Birth Date: </label>
@@ -108,12 +109,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <div class="form-group" id="form-height">
                             <label for="height">Height: </label>
                             <input type="number" min="125" max="235" class="form-control" required name="height" id="height"
-                                placeholder="Enter Height in cm">
+                                placeholder="cm">
                         </div>
                         <div class="form-group" id="form-weight">
                             <label for="weight">Weight: </label>
                             <input type="number" min="25" max="180" class="form-control" required name="weight" id="weight"
-                                placeholder="Enter Weight in kg">
+                                placeholder="kg">
                         </div>
                     </div>
                         ';
@@ -149,13 +150,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="form-group">
                 <label for="phone">Phone: </label>
                 <input type="tel" class="form-control" required pattern="[0-9]{10}" name="phone" id="phone"
-                    placeholder="Enter Phone Number">
+                    placeholder="Enter phone number">
             </div>
 
             <div class="form-group">
                 <label for="city">City: </label>
                 <input type="text" class="form-control" min="2" max="30" required name="city" id="city"
-                    placeholder="Enter City">
+                    placeholder="Enter city">
             </div>
 
             <?php 
@@ -164,7 +165,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <div class="form-group">
                         <label for="emergency_phone">Emergency Phone: </label>
                         <input type="tel" class="form-control" required pattern="[0-9]{10}" name="emergency_phone"
-                            id="emergency_phone" placeholder="Enter Emergency Phone Number">
+                            id="emergency_phone" placeholder="Enter emergency phone number">
                     </div>
                         ';
                     }
@@ -172,7 +173,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             <div class="form-group">
                 <label for="email">Email: </label>
-                <input type="email" class="form-control" required name="email" id="email" placeholder="Enter Email">
+                <input type="email" class="form-control" required name="email" id="email" placeholder="Enter email">
             </div>
 
             <button type="submit" class="login-button">Save</button>
