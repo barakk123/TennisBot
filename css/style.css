@@ -926,16 +926,9 @@ div.error-message {
 }
 
 .fileInput {
-    cursor: pointer;
-    height: 100%;
     position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 99;
-    /*This makes the button huge. If you want a bigger button, increase the font size*/
-    font-size: 50px;
-    /*Opacity settings for all browsers*/
     opacity: 0;
+    width: 60px;
     -moz-opacity: 0;
     filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
 }
@@ -962,6 +955,31 @@ div.error-message {
     display: flex;
     align-items: center;
     width: 64px;
+    margin-left: 10px;
+}
+
+.addTraineeBtn {
+    width: 110px;
+    margin-top: 20px;
+}
+
+#tableContainer {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.check-label {
+    margin-top: 10px;
+}
+
+#saveButton {
+    width: 60px;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+#traineeContainer {
     margin-left: 10px;
 }
 

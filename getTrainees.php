@@ -19,9 +19,7 @@
         while($row = $result->fetch_assoc()) {
             $data[] = $row;
         }
-    } else {
-        echo "0 results";
-    }
+    } 
 
     echo json_encode($data);
 ?>

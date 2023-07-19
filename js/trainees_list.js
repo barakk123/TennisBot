@@ -137,19 +137,42 @@ function renderTable(data) {
 
     myTable.appendChild(tbody);
 
-    // Append the table to the table container div
-    let tableContainer = document.querySelector('#tableContainer');
-    tableContainer.appendChild(myTable);
-}
+        // Append the table to the table container div
+        let tableContainer = document.querySelector('#tableContainer');
+        tableContainer.innerHTML = '';
+        tableContainer.appendChild(myTable);
+    
+        // Create and append "Add Trainee" button
+        createAddTraineeButton();
+    }
 
-fetch('getTrainees.php')
+    function createAddTraineeButton() {
+        let tableContainer = document.querySelector('#tableContainer');
+        let addTraineeBtn = document.createElement('button');
+        addTraineeBtn.className = "addTraineeBtn";
+        addTraineeBtn.textContent = "Add Trainee";
+        addTraineeBtn.addEventListener('click', () => {
+            window.location.href = 'assign_trainees.php';
+        });
+    
+        // Append "Add Trainee" button to the container
+        tableContainer.appendChild(addTraineeBtn);
+    }
+
+    fetch('getTrainees.php')
     .then(response => {
         if (!response.ok) {
             throw new Error("HTTP error " + response.status);
         }
-        return response.json();
+        return response.text();
     })
-    .then(data => {
-        renderTable(data);
+    .then(text => {
+        console.log(text);
+        let data = JSON.parse(text);
+        if (data.length > 0) {
+            renderTable(data);
+        } else {
+            createAddTraineeButton();
+        }
     })
     .catch(error => console.error(error));
