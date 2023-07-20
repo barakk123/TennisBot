@@ -155,9 +155,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             <div class="form-group">
                 <label for="city">City: </label>
-                <input type="text" class="form-control" min="2" max="30" required name="city" id="city"
-                    placeholder="Enter city">
+                <input type="text" class="form-control" minlength="2" maxlength="30" required name="city" id="city"
+                    pattern="^([A-Z][a-z]*)(\s[A-Z][a-z]*)*$" placeholder="Enter city"
+                    title="The city name should start with a capital letter and contain at least two letters after a space.">
             </div>
+
 
             <?php 
                 if ($user_type === 'Trainee') {

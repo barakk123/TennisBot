@@ -37,7 +37,7 @@ else {
     <div class="header" id="header-add-goals">
         <nav class="breadcrumb">
             <ol class="breadcrumb-list">
-                <li class="breadcrumb-item"><a href="./index.php">My Goals</a></li>
+                <li class="breadcrumb-item"><a href="index.php">My Goals</a></li>
                 <li class="breadcrumb-item active" aria-current="page">
                     <a href="#">Edit Goal</a>
                 </li>

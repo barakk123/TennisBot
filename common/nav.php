@@ -62,7 +62,7 @@
                             <button class="text-home btn btn-default dropdown-toggle" type="button" data-bs-toggle="dropdown">Goals
                                 <span class="caret"></span></button>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="index.php">My Goals</a></li>
+                                <li><a class="dropdown-item" href="my_goals.php">My Goals</a></li>
                                 <li><a class="dropdown-item" href="#">Coach Goals</a></li>
                             </ul>
                         </div>
@@ -114,7 +114,7 @@
                         <button class="btn btn-default dropdown-toggle" type="button"
                             data-bs-toggle="dropdown">Goals</button>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="index.php" class="my-goals-link">My Goals</a></li>
+                            <li><a class="dropdown-item" href="my_goals.php" class="my-goals-link">My Goals</a></li>
                             <li><a class="dropdown-item" href="#">Coach Goals</a></li>
                         </ul>
                         </div>

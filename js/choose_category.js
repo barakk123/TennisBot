@@ -318,7 +318,7 @@ document.forms[0].addEventListener("submit", function (event) {
                     openLightbox(
                         "success",
                         "Goal saved successfully!",
-                        "index.php"
+                        "my_goals.php"
                     );
                 }
             });
