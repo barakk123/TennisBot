@@ -1,3 +1,5 @@
+let profile_id = document.getElementById("profile_id")?.value;
+
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("skillsForm");
 
@@ -21,7 +23,10 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault();
         const formData = new FormData(form);
 
-        fetch("setTraineeSkills.php", {
+        const api = profile_id
+            ? `setTraineeSkills.php?id=${profile_id}`
+            : `setTraineeSkills.php`;
+        fetch(api, {
             method: "POST",
             body: formData,
         })
@@ -31,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 openLightbox(
                     "success",
                     "Updated successfully!",
-                    "my_goals.php"
+                    `coach_goals.php?id=${profile_id}`
                 );
             })
             .catch((error) => {

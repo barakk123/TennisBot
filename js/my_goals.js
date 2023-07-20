@@ -1,7 +1,7 @@
 const apiUrl = "get.php";
 
 let skills;
-
+let profile_id = document.getElementById("profile_id")?.value;
 async function fetchGoals(sortOption = "Date") {
     // Default value is 'Date'
     const response = await fetch(`${apiUrl}?sortOption=${sortOption}`);
@@ -10,7 +10,11 @@ async function fetchGoals(sortOption = "Date") {
     // clear existing goals before displaying sorted ones
     document.querySelector(".my-goals-table").innerHTML = "";
 
-    fetch(`getStrikesByCategory.php`)
+    const api = profile_id
+        ? `getStrikesByCategory.php?id=${profile_id}`
+        : `getStrikesByCategory.php`;
+
+    fetch(api)
         .then((response) => response.json())
         .then((data) => {
             skills = data.strikes;
@@ -49,10 +53,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const wrapperHead = document.getElementsByClassName("wrapper-head")[0];
     if (addGoalBtn) {
         // Add a click event listener to the button
+        const api = profile_id
+            ? `getUserCategories.php?id=${profile_id}`
+            : "getUserCategories.php";
         addGoalBtn.addEventListener("click", function () {
-            fetch("getUserCategories.php")
+            fetch(api)
                 .then((response) => response.json())
                 .then((categories) => {
+                    console.log(categories);
                     // If there are no categories, display the lightbox
 
                     if (!categories?.length) {
@@ -66,13 +74,17 @@ document.addEventListener("DOMContentLoaded", function () {
                         // Disable the button after clicking
                         addGoalBtn.setAttribute("disabled", "true");
                         // show the new "For Yonit" button here
-                        var newButton = document.createElement("a");   // Create a new link element
-                        newButton.innerHTML = "For Yonit";            // Set the text
-                        newButton.href = "addToSkillTable.php";       // Set the target URL
-                        newButton.classList.add("new-button-class");  // Set a CSS class if needed
+                        var newButton = document.createElement("a"); // Create a new link element
+                        newButton.innerHTML = "For Yonit"; // Set the text
+                        newButton.href = "addToSkillTable.php"; // Set the target URL
+                        newButton.classList.add("new-button-class"); // Set a CSS class if needed
 
-                       wrapperHead.appendChild(newButton); 
-                    } else window.location.href = "add_goal.php";
+                        wrapperHead.appendChild(newButton);
+                    } else if (profile_id) {
+                        window.location.href = `add_goal.php?id=${profile_id}`;
+                    } else {
+                        window.location.href = "add_goal.php";
+                    }
                 });
         });
     }

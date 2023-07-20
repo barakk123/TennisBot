@@ -1,5 +1,11 @@
+let profile_id = document.getElementById("profile_id")?.value;
+
 document.addEventListener("DOMContentLoaded", function () {
-    fetch("getUserCategories.php")
+    var api = profile_id
+        ? `getUserCategories.php?id=${profile_id}`
+        : "getUserCategories.php";
+
+    fetch(api)
         .then((response) => response.json())
         .then((categories) => {
             const selectElement = document.getElementById("date-myGoals");
@@ -46,9 +52,11 @@ function loadGoal() {
 }
 
 function getStrikesByCategory(category, goalId) {
-    fetch(
-        `getStrikesByCategory.php?category=${category}&update=true&goal_id=${goalId}`
-    )
+    const api = profile_id
+        ? `getStrikesByCategory.php?category=${category}&update=true&goal_id=${goalId}&id=${profile_id}`
+        : `getStrikesByCategory.php?category=${category}&update=true&goal_id=${goalId}`;
+
+    fetch(api)
         .then((response) => response.json())
         .then((data) => {
             const tableElement = document.querySelector(
@@ -263,7 +271,11 @@ function submitChangesBeforeUpdateStrikeList(category, goalId) {
         };
 
         // Send the goal data to the server
-        fetch("updateGoalCategories.php", {
+        var api = profile_id
+            ? `updateGoalCategories.php?id=${profile_id}`
+            : "updateGoalCategories.php";
+
+        fetch(api, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -347,7 +359,11 @@ document.forms[0].addEventListener("submit", function (event) {
         };
 
         // Send the goal data to the server
-        fetch("updateGoalCategories.php", {
+        var api = profile_id
+            ? `updateGoalCategories.php?id=${profile_id}`
+            : "updateGoalCategories.php";
+
+        fetch(api, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

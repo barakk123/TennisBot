@@ -6,9 +6,11 @@
     }
 
     $user_type = $_SESSION['user_type'];
-    $sql = "SELECT profile_pic FROM tbl_210_details_test WHERE user_id = $user_id";
+    $user_id = $_SESSION['user_id']; // Ensure 'user_id' is stored in session when user logs in
+    $sql = "SELECT profile_pic, full_name FROM tbl_210_details WHERE user_id = $user_id";
     $result = $connection->query($sql);
     $data = mysqli_fetch_assoc($result);
+    $full_name = $data['full_name']; // You need to assign the fetched full_name to the $full_name variable
 ?>
 
 <input type="hidden" name="profile_pic" value="<?=$data['profile_pic'];?>">
@@ -22,12 +24,15 @@
             <div id="mySidenav" class="sidenav">
                 <div class="sidenavcontent">
                     <!--Profile pic -->
-                    <a href="profile.php">
-                        <img src="images/profile.jpeg" class="profile_image" id="profile_image2" class="profile margin" alt="profile">
-                    </a>
+                    <div class="name-pic"><?php echo $full_name; ?>
+                        <a href="profile.php">
+                            <img src="images/profile.jpeg" class="profile_image" id="profile_image2"
+                                class="profile margin" alt="profile">
+
+                        </a>
+                    </div>
                     <!--Name of user from database -->
 
-                    <!--View profile button -->
                     <a href="#">My Account</a>
                     <a href="#">Settings</a>
                     <a href="#">Support</a>
@@ -76,7 +81,7 @@
                                 <span class="caret"></span></button>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="my_goals.php">My Goals</a></li>
-                                <li><a class="dropdown-item" href="#">Coach Goals</a></li>
+                                <li><a class="dropdown-item" href="coach_goals.php">Coach Goals</a></li>
                             </ul>
                         </div>
                         ';

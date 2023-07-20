@@ -17,7 +17,7 @@ else {
     $userId = $_SESSION["user_id"];
 }
 
-$sql = 'SELECT coach_id FROM tbl_210_trainee_coach_test WHERE trainee_id = '.$userId;
+$sql = 'SELECT coach_id FROM tbl_210_trainee_coach WHERE trainee_id = '.$userId;
 $response = $connection->query($sql);
 $trainee = $response->fetch_assoc();
 if ($trainee && !empty($trainee['coach_id'])) {

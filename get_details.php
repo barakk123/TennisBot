@@ -18,7 +18,7 @@ else {
     $userId = $_SESSION["user_id"];
 }
 
-$query = "SELECT * FROM tbl_210_details_test WHERE user_id = $userId";
+$query = "SELECT * FROM tbl_210_details WHERE user_id = $userId";
 $result = $connection->query($query);
 $data = mysqli_fetch_assoc($result);
 

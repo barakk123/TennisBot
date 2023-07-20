@@ -5,9 +5,14 @@
     }
 
     if($_SERVER["REQUEST_METHOD"] === "POST") {
-        $user_id = $_SESSION["user_id"];
+        if (isset($_GET["id"]) && !empty($_GET["id"])) {
+            $user_id = $_GET["id"];
+        }
+        else {
+            $user_id = $_SESSION["user_id"];
+        }
     
-        $query = "INSERT INTO tbl_210_skills_test (user_id, category_id, subcategory_id, value) VALUES ";
+        $query = "INSERT INTO tbl_210_skills (user_id, category_id, subcategory_id, value) VALUES ";
         $values = [];
     
         // Process the 8 categories with two subcategories

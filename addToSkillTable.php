@@ -4,24 +4,33 @@
 
     $user_type = $_SESSION['user_type'];
 
-
     if(!isset($_SESSION["user_id"])) {
         header("Location: login.php");
-        exit;}
-    if ($user_type == 'Coach') {
-        header("Location: index.php");
         exit;
-        }
+    }
+
+    $profileId = NULL;
+    if (isset($_SESSION["profile_id"]) && !empty($_SESSION["profile_id"])) {
+        $profileId = $_SESSION["profile_id"];
+    }
 
     // Query to fetch category names
-    $query = "SELECT id, name FROM tbl_210_categories_def_test ORDER BY id";
+    $query = "SELECT id, name FROM tbl_210_categories_def ORDER BY id";
     $result = mysqli_query($connection, $query);
-    $categories = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    
+    $categories = array();
+    while($row = mysqli_fetch_assoc($result)){
+        $categories[] = $row;
+    }
 
     // Query to fetch subcategory names
-    $query = "SELECT id, name FROM tbl_210_subcategories_def_test ORDER BY id";
+    $query = "SELECT id, name FROM tbl_210_subcategories_def ORDER BY id";
     $result = mysqli_query($connection, $query);
-    $subcategories = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    
+    $subcategories = array();
+    while($row = mysqli_fetch_assoc($result)){
+        $subcategories[] = $row;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -46,10 +55,11 @@
 <body>
     <?php include_once 'common/nav.php'; ?>
     For Yonit: Hey, this page is just to let you keep the flow if you tests new trainees you created.<br>
-    OFC Trainee cant change this skills value for himself - its the Robot's job :p
+    OFC Trainee cant change this skills value for himself - its the Robot's job
     <div id="traineeContainer">
-    <form id="skillsForm">
-        <?php
+        <form id="skillsForm">
+            <input type="hidden" id="profile_id" name="profile_id" value="<?=$profileId; ?>">
+            <?php
             // Iterate through categories array
             for ($i = 0; $i < count($categories); $i++) {
                 // Print the category with its subcategories
@@ -79,8 +89,8 @@
                 echo "</div>";
             }
         ?>
-        <button type="submit" id="saveButton">Save</button>
-    </form>
+            <button type="submit" id="saveButton">Save</button>
+        </form>
 
     </div>
 
@@ -92,4 +102,5 @@
         mysqli_close($connection);
     ?>
 </body>
+
 </html>

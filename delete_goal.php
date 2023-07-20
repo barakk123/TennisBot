@@ -9,17 +9,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'DELETE' && isset($_GET['id'])) {
 
     try {
         // Delete the subcategories associated with the goal
-        $stmt = mysqli_prepare($connection, "DELETE FROM tbl_210_subcategories_test WHERE goal_id = ?");
+        $stmt = mysqli_prepare($connection, "DELETE FROM tbl_210_subcategories WHERE goal_id = ?");
         mysqli_stmt_bind_param($stmt, 'i', $goalId);
         mysqli_stmt_execute($stmt);
 
         // Delete the categories associated with the goal
-        $stmt = mysqli_prepare($connection, "DELETE FROM tbl_210_categories_test WHERE goal_id = ?");
+        $stmt = mysqli_prepare($connection, "DELETE FROM tbl_210_categories WHERE goal_id = ?");
         mysqli_stmt_bind_param($stmt, 'i', $goalId);
         mysqli_stmt_execute($stmt);
 
         // Delete the goal itself
-        $stmt = mysqli_prepare($connection, "DELETE FROM tbl_210_goals_test WHERE id = ?");
+        $stmt = mysqli_prepare($connection, "DELETE FROM tbl_210_goals WHERE id = ?");
         mysqli_stmt_bind_param($stmt, 'i', $goalId);
         mysqli_stmt_execute($stmt);
 

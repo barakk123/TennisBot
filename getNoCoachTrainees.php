@@ -6,11 +6,11 @@ if (session_status() === PHP_SESSION_NONE) {
 
 $sql = "
 SELECT u.*, d.full_name 
-FROM tbl_210_users_test u 
-JOIN tbl_210_details_test d ON u.id = d.user_id 
+FROM tbl_210_users u 
+JOIN tbl_210_details d ON u.id = d.user_id 
 WHERE u.user_type = 'Trainee' 
 AND u.id NOT IN (
-    SELECT tc.trainee_id FROM tbl_210_trainee_coach_test tc
+    SELECT tc.trainee_id FROM tbl_210_trainee_coach tc
 )
 ";
 

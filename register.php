@@ -12,7 +12,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST["registerName"]) && !em
     $type = $_POST["registerType"];
   
     if(preg_match('/^(?=.*[A-Za-z])[A-Za-z0-9]{3,}$/', $username) && preg_match('/^[A-Za-z0-9]{6,}$/', $password)) {
-        $stmt = $connection->prepare("SELECT * FROM tbl_210_users_test WHERE username=?");
+        $stmt = $connection->prepare("SELECT * FROM tbl_210_users WHERE username=?");
         if ($stmt === false) {
             die('mysqli_prepare failed: ' . mysqli_error($connection));
         }
@@ -28,7 +28,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST["registerName"]) && !em
                 $stmt->close(); // Close the previous statement
             
                 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-                $stmt = $connection->prepare("INSERT INTO tbl_210_users_test (username, password, user_type) VALUES (?, ?, ?)");
+                $stmt = $connection->prepare("INSERT INTO tbl_210_users (username, password, user_type) VALUES (?, ?, ?)");
                 $stmt->bind_param('sss', $username, $hashed_password, $type);
                 if ($stmt->execute()) {
                     $_SESSION['user_id'] = $connection->insert_id;

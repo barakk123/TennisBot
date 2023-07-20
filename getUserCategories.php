@@ -18,8 +18,8 @@ else {
 }
 
 $sql = "SELECT DISTINCT(catDef.s_type) 
-    FROM `tbl_210_categories_def_test` as catDef 
-    JOIN `tbl_210_skills_test` as skills ON catDef.id = skills.category_id 
+    FROM `tbl_210_categories_def` as catDef 
+    JOIN `tbl_210_skills` as skills ON catDef.id = skills.category_id 
     WHERE skills.user_id = $userId AND catDef.id = skills.category_id";
 
 $result = $connection->query($sql);

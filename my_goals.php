@@ -1,6 +1,11 @@
 <?php
     include "db.php";
     include_once 'common/verify.php';
+
+    $profileId = NULL;
+    if (isset($_SESSION["profile_id"]) && !empty($_SESSION["profile_id"])) {
+        $profileId = $_SESSION["profile_id"];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -36,6 +41,7 @@
 
             <h1 class="headline">My Goals</h1>
             <div class="wrapper-head">
+                <input type="hidden" id="profile_id" name="profile_id" value="<?=$profileId; ?>">
                 <select class="select-date" id="date-myGoals">
                 </select>
                 <button id="add-goal-btn" class="image-button">

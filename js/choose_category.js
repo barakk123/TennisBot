@@ -1,5 +1,10 @@
+let profile_id = document.getElementById("profile_id")?.value;
+
 document.addEventListener("DOMContentLoaded", function () {
-    fetch("getUserCategories.php")
+    const api = profile_id
+        ? `getUserCategories.php?id=${profile_id}`
+        : "getUserCategories.php";
+    fetch(api)
         .then((response) => response.json())
         .then((categories) => {
             const selectElement = document.getElementById("date-myGoals");
@@ -43,7 +48,11 @@ function updateStrikeList(category) {
 }
 
 function getStrikesByCategory(category) {
-    fetch(`getStrikesByCategory.php?category=${category}`)
+    const api = profile_id
+        ? `getStrikesByCategory.php?category=${category}&id=${profile_id}`
+        : `getStrikesByCategory.php?category=${category}`;
+
+    fetch(api)
         .then((response) => response.json())
         .then((data) => {
             const tableElement = document.querySelector(
@@ -212,7 +221,11 @@ function submitChangesBeforeUpdateStrikeList(category) {
         };
 
         // Send the goal data to the server
-        fetch("saveGoals.php", {
+        const api = profile_id
+            ? `saveGoals.php?id=${profile_id}`
+            : "saveGoals.php";
+
+        fetch(api, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -302,7 +315,10 @@ document.forms[0].addEventListener("submit", function (event) {
         };
 
         // Send the goal data to the server
-        fetch("saveGoals.php", {
+        const api = profile_id
+            ? `saveGoals.php?id=${profile_id}`
+            : "saveGoals.php";
+        fetch(api, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -318,7 +334,9 @@ document.forms[0].addEventListener("submit", function (event) {
                     openLightbox(
                         "success",
                         "Goal saved successfully!",
-                        "my_goals.php"
+                        profile_id
+                            ? `coach_goals.php?id=${profile_id}`
+                            : "my_goals.php"
                     );
                 }
             });

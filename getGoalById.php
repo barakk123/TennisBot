@@ -16,8 +16,8 @@ else if ($_SERVER["REQUEST_METHOD"] != "GET" || !isset($_GET['id']) || empty($_G
 $goalId = $_GET['id'];
 
 $sql = "SELECT goal.*, sub.*
-    FROM tbl_210_goals_test as goal
-    JOIN tbl_210_subcategories_test as sub ON goal.id = sub.goal_id
+    FROM tbl_210_goals as goal
+    JOIN tbl_210_subcategories as sub ON goal.id = sub.goal_id
     WHERE goal.id = $goalId;
 ";
 

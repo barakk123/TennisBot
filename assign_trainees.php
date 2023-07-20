@@ -11,7 +11,7 @@
     if ($user_type == 'Trainee') {
         header("Location: index.php");
         exit;
-        }
+    }
         
 ?>
 
@@ -38,7 +38,7 @@
 <body>
     <?php include_once 'common/nav.php'; ?>
     For Yonit: Hey, this page is just to let you keep the flow if you tests new users(trainees/coaches) you created.<br>
-    OFC coach cant assign trainees to himself - its the Cheif's job :p
+    OFC coach cant assign trainees to himself - its the Cheif's job
     <div id="traineeContainer"></div>
     <button id="saveButton">Save</button> <!-- Added save button -->
 

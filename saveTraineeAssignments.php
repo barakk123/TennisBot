@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         foreach ($request as $trainee_id) {
             // Insert each trainee-coach assignment into the database
-            $sql = "INSERT INTO tbl_210_trainee_coach_test (trainee_id, coach_id) VALUES ($trainee_id, $coach_id)";
+            $sql = "INSERT INTO tbl_210_trainee_coach (trainee_id, coach_id) VALUES ($trainee_id, $coach_id)";
             if (!$connection->query($sql)) {
                 // Insert failed, send back an error response
                 echo json_encode(['success' => false]);

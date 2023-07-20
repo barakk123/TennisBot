@@ -1,6 +1,7 @@
-const apiUrl = "get.php";
+const apiUrl = "get.php?coach_goals=1";
 
 let skills;
+let profile_id = document.getElementById("profile_id")?.value;
 
 async function fetchGoals(sortOption = "Date") {
     // Default value is 'Date'
@@ -10,7 +11,11 @@ async function fetchGoals(sortOption = "Date") {
     // clear existing goals before displaying sorted ones
     document.querySelector(".my-goals-table").innerHTML = "";
 
-    fetch(`getStrikesByCategory.php`)
+    const api = profile_id
+        ? `getStrikesByCategory.php?id=${profile_id}`
+        : `getStrikesByCategory.php`;
+
+    fetch(api)
         .then((response) => response.json())
         .then((data) => {
             skills = data.strikes;
@@ -45,45 +50,48 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-    const addGoalBtn = document.getElementById("add-goal-btn");
-    const wrapperHead = document.getElementsByClassName("wrapper-head")[0];
-    if (addGoalBtn) {
-        // Add a click event listener to the button
-        let profile_id = document.getElementById("profile_id")?.value;
-        addGoalBtn.addEventListener("click", function () {
-            var api = profile_id
-                ? `getUserCategories.php?id=${profile_id}`
-                : "getUserCategories.php";
+    if (!profile_id) {
+        document.getElementById("add-goal-btn").remove();
+    } else {
+        const addGoalBtn = document.getElementById("add-goal-btn");
+        const wrapperHead = document.getElementsByClassName("wrapper-head")[0];
+        if (addGoalBtn) {
+            // Add a click event listener to the button
+            addGoalBtn.addEventListener("click", function () {
+                var api = profile_id
+                    ? `getUserCategories.php?id=${profile_id}`
+                    : "getUserCategories.php";
 
-            fetch(api)
-                .then((response) => response.json())
-                .then((categories) => {
-                    // If there are no categories, display the lightbox
+                fetch(api)
+                    .then((response) => response.json())
+                    .then((categories) => {
+                        // If there are no categories, display the lightbox
 
-                    if (!categories?.length) {
-                        // Display the lightbox
-                        openLightbox(
-                            "error",
-                            "To create a goal, you must perform initial training with the robot",
-                            //"index.php"
-                            "#"
-                        );
-                        // Disable the button after clicking
-                        addGoalBtn.setAttribute("disabled", "true");
-                        // show the new "For Yonit" button here
-                        var newButton = document.createElement("a"); // Create a new link element
-                        newButton.innerHTML = "For Yonit"; // Set the text
-                        newButton.href = "addToSkillTable.php"; // Set the target URL
-                        newButton.classList.add("new-button-class"); // Set a CSS class if needed
+                        if (!categories?.length) {
+                            // Display the lightbox
+                            openLightbox(
+                                "error",
+                                "To create a goal, you must perform initial training with the robot",
+                                //"index.php"
+                                "#"
+                            );
+                            // Disable the button after clicking
+                            addGoalBtn.setAttribute("disabled", "true");
+                            // show the new "For Yonit" button here
+                            var newButton = document.createElement("a"); // Create a new link element
+                            newButton.innerHTML = "For Yonit"; // Set the text
+                            newButton.href = "addToSkillTable.php"; // Set the target URL
+                            newButton.classList.add("new-button-class"); // Set a CSS class if needed
 
-                        wrapperHead.appendChild(newButton);
-                    } else if (profile_id) {
-                        window.location.href = `add_goal.php?id=${profile_id}`;
-                    } else {
-                        window.location.href = "add_goal.php";
-                    }
-                });
-        });
+                            wrapperHead.appendChild(newButton);
+                        } else if (profile_id) {
+                            window.location.href = `add_goal.php?id=${profile_id}`;
+                        } else {
+                            window.location.href = "add_goal.php";
+                        }
+                    });
+            });
+        }
     }
 });
 
@@ -143,22 +151,24 @@ function createGoalElement(goal) {
     let goalColumn5Element = document.createElement("div");
     goalColumn5Element.className = "my-goals-column5";
 
-    let editElement = document.createElement("a");
-    editElement.className = "my-goals-edit";
-    editElement.textContent = "✏️";
-    editElement.href = `edit_goal.php?id=${goal.id}`;
-    goalColumn5Element.appendChild(editElement);
+    if (profile_id) {
+        let editElement = document.createElement("a");
+        editElement.className = "my-goals-edit";
+        editElement.textContent = "✏️";
+        editElement.href = `edit_goal.php?id=${goal.id}`;
+        goalColumn5Element.appendChild(editElement);
 
-    let deleteElement = document.createElement("a");
-    deleteElement.className = "my-goals-delete";
-    deleteElement.textContent = "🗑️";
-    deleteElement.href = "#";
-    deleteElement.onclick = function () {
-        if (confirm("Are you sure you want to delete this goal?")) {
-            deleteGoal(goal.id);
-        }
-    };
-    goalColumn5Element.appendChild(deleteElement);
+        let deleteElement = document.createElement("a");
+        deleteElement.className = "my-goals-delete";
+        deleteElement.textContent = "🗑️";
+        deleteElement.href = "#";
+        deleteElement.onclick = function () {
+            if (confirm("Are you sure you want to delete this goal?")) {
+                deleteGoal(goal.id);
+            }
+        };
+        goalColumn5Element.appendChild(deleteElement);
+    }
 
     goalRowParentElement.appendChild(goalColumn5Element);
 

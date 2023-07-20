@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $rank = $payload['rank'];
         $team = $payload['team'];
     
-        $query = "UPDATE tbl_210_union_test SET experience = ?, rank = ?, team = ? WHERE user_id = ?";
+        $query = "UPDATE tbl_210_union SET experience = ?, rank = ?, team = ? WHERE user_id = ?";
         $stmt = mysqli_prepare($connection, $query);
         $stmt->bind_param("sssi", $experience, $rank, $team, $user_id);
     }
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $emergency_phone = $payload['emergency_phone'];
         $email = $payload['email'];
     
-        $query = "UPDATE tbl_210_contact_test SET phone = ?, city = ?, emergency_phone = ?, email = ? WHERE user_id = ?";
+        $query = "UPDATE tbl_210_contact SET phone = ?, city = ?, emergency_phone = ?, email = ? WHERE user_id = ?";
         $stmt = mysqli_prepare($connection, $query);
         $stmt->bind_param("ssssi", $phone, $city, $emergency_phone, $email, $user_id);
     }

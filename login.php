@@ -12,7 +12,7 @@
         $username = $_POST["loginName"];
         $password = $_POST["loginPass"];
 
-        $query  = "SELECT * FROM tbl_210_users_test WHERE username=?";
+        $query  = "SELECT * FROM tbl_210_users WHERE username=?";
         $stmt = mysqli_prepare($connection, $query);
         if ($stmt === false) {
             die('mysqli_prepare failed: ' . mysqli_error($connection));

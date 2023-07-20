@@ -60,7 +60,6 @@ async function fetchUserData() {
         profileDetails.innerHTML += `<div class="data">${dataDetails.potential}</div>`;
     }
 
-    //profileDetailsPic.appendChild(profileDetails);
 
     // Fetching user union data
     var api = profile_id ? `get_union.php?id=${profile_id}` : "get_union.php";
@@ -117,8 +116,6 @@ async function fetchUserData() {
         profileUnion.innerHTML += `<button onclick="updateDetails()">Update</button>`;
     }
 
-    //profileUnionContactNotic.appendChild(profileUnion);
-
     // Fetching user contact data
     var api = profile_id
         ? `get_contact.php?id=${profile_id}`
@@ -173,7 +170,6 @@ async function fetchUserData() {
         profileContact.innerHTML += `<button onclick="updateDetails()">Update</button>`;
     }
 
-    //profileUnionContactNotic.appendChild(profileContact);
     //profileUnionContactNotic.appendChild(profileNotic); // this is empty for now
 
     if (profile_id) {
@@ -207,7 +203,7 @@ async function fetchUserData() {
     }
 }
 
-fetchUserData(); // Call the function to start fetching data
+fetchUserData(); 
 
 bigContainer.appendChild(profileDetailsPic);
 bigContainer.appendChild(profileUnionContactNotic);

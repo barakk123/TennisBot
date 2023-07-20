@@ -9,6 +9,11 @@ else {
     header("Location: index.php");
     exit;
 }
+
+$profileId = NULL;
+if (isset($_SESSION["profile_id"]) && !empty($_SESSION["profile_id"])) {
+    $profileId = $_SESSION["profile_id"];
+}
 ?>
 
 <!DOCTYPE html>
@@ -54,6 +59,7 @@ else {
     <div class="tableChooseCategory">
         <form>
             <table></table>
+            <input type="hidden" id="profile_id" name="profile_id" value="<?=$profileId; ?>">
             <input type="hidden" name="goal-id" id="goal-id" value="<?=$goalId;?>">
             <button type="submit" id="submitGoal">Update</button>
         </form>

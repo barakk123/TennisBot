@@ -10,7 +10,13 @@ if(!isset($_SESSION["user_id"])) {
     exit;
 }
 
-$user_id = $_SESSION["user_id"];
+if (isset($_SESSION["profile_id"]) && !empty($_SESSION["profile_id"])) {
+    $user_id = $_SESSION["profile_id"];
+}
+else {
+    $user_id = $_SESSION["user_id"];
+}
+
 $goal = json_decode(file_get_contents('php://input'), true);
 
 $goal_id = $goal['goalId'];
@@ -19,7 +25,7 @@ $start_date = $goal['startDate'];
 $end_date = $goal['endDate'];
 
 // Insert the goal into the goals table
-$sql = "UPDATE tbl_210_goals_test 
+$sql = "UPDATE tbl_210_goals 
 SET title='$title', start_date='$start_date', end_date='$end_date' 
 WHERE trainee_id = $user_id AND id = $goal_id";
 

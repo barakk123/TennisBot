@@ -34,17 +34,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST["email"]?: NULL;
     
     // Prepare SQL for each table and execute
-    $query = "INSERT INTO tbl_210_details_test(user_id, full_name, birth_date, height, weight, gender, potential) VALUES(?,?,?,?,?,?,?)";
+    $query = "INSERT INTO tbl_210_details(user_id, full_name, birth_date, height, weight, gender, potential) VALUES(?,?,?,?,?,?,?)";
     $stmt = mysqli_prepare($connection, $query);
     $stmt->bind_param("issiiss", $user_id, $full_name, $birth_date, $height, $weight, $gender, $potential);
     
     if ($stmt->execute()) {
-        $query = "INSERT INTO tbl_210_union_test(user_id, experience, rank, team, registered_date) VALUES(?,?,?,?,?)";
+        $query = "INSERT INTO tbl_210_union(user_id, experience, rank, team, registered_date) VALUES(?,?,?,?,?)";
         $stmt = mysqli_prepare($connection, $query);
         $stmt->bind_param("iiiss", $user_id, $experience, $rank, $team, $registered_date);
         
         if ($stmt->execute()) {
-            $query = "INSERT INTO tbl_210_contact_test(user_id, phone, city, emergency_phone, email) VALUES(?,?,?,?,?)";
+            $query = "INSERT INTO tbl_210_contact(user_id, phone, city, emergency_phone, email) VALUES(?,?,?,?,?)";
             $stmt = mysqli_prepare($connection, $query);
             $stmt->bind_param("issss", $user_id, $phone, $city, $emergency_phone, $email);
             
@@ -95,7 +95,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <label for="full_name">Full Name: </label>
                 <input type="text" class="form-control" required
                     pattern="([A-Z][a-z]{1,}-[A-Z][a-z]{1,}|[A-Z][a-z]{1,}) ([A-Z][a-z]{1,}-[A-Z][a-z]{1,}|[A-Z][a-z]{1,})"
-                    name="full_name" id="full_name" placeholder="Enter full name" maxlength="30">
+                    name="full_name" id="full_name" placeholder="Enter full name" maxlength="30" title="The name should start with a capital letter and contain at least two letters after a space.">
+                    
             </div>
 
             <div class="form-group">

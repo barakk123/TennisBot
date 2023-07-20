@@ -148,7 +148,8 @@ a {
     text-decoration: none;
     font-size: 25px;
     color: white;
-    display: block;
+    display: flex;
+    align-items: center;
     transition: 0.3s;
 }
 
@@ -757,6 +758,7 @@ button.delete-btn a {
 .profile_details_pic {
     display: flex;
     flex-direction: row;
+    margin-top: 14px;
 }
 
 .profile_pic {
@@ -939,10 +941,20 @@ div.error-message {
 #profile_image2 {
     width: 100px;
     height: 100px;
-    margin: 0px 0px 8px 0px;
+    margin: 8px 0px 12px 0px;
     border-radius: 50%;
     overflow: hidden;
     object-fit: cover;
+}
+
+.name-pic {
+    align-items: center;
+    display: flex;
+    font-size: 25px;
+    flex-direction: column;
+    font-family: tahoma;
+    color: white;
+    margin-bottom: 10px;
 }
 
 .filters {
@@ -1050,6 +1062,21 @@ div.error-message {
     margin-top: 20px;
 }
 
+.index-title {
+    margin-left: 10px;
+}
+
+.messages-index {
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    /*white-space: nowrap;*/
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 @media (min-width: 400px) {
     .edit-btn,
     .delete-btn {
@@ -1074,6 +1101,19 @@ div.error-message {
     .height-weight {
         display: flex;
         flex-direction: row;
+    }
+
+    .card-text {
+        white-space: nowrap;
+    }
+
+    
+    .card-img, .card-img-bottom, .card-img-top {
+        height: 62%;
+    }
+
+    .card {
+        height: 360px;
     }
 
     #form-height,
@@ -1304,6 +1344,12 @@ div.error-message {
     .edit-btn,
     .delete-btn {
         font-size: 14px;
+    }
+}
+
+@media (min-width: 768px) {
+    .card-img-top {
+        height: auto;
     }
 }
 
