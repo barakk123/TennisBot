@@ -2,7 +2,9 @@
 include "db.php";
 
 // Start session
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
 
 if($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST["registerName"]) && !empty($_POST["registerPass"]) && !empty($_POST["registerType"])) {
     $username = $_POST["registerName"];

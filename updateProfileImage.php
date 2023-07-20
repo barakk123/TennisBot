@@ -1,7 +1,9 @@
 <?php
 include "db.php";
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $payload = json_decode(file_get_contents('php://input'), true);

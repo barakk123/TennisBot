@@ -1,6 +1,11 @@
 <?php
     include "db.php";
     include_once 'common/verify.php';
+
+    $profileId = NULL;
+    if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id']) && !empty($_GET['id'])) {
+        $profileId = $_GET["id"];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -43,12 +48,14 @@
                 </button>
             </div>
         </div>
+        <input type="hidden" id="profile_id" name="profile_id" value="<?=$profileId; ?>">
         <div class="my-goals-table">
             <!-- All the script  -->
         </div>
         <?php include_once 'common/footer.php'; ?>
     </div>
     <script src="./js/global.js"></script>
+    <script src="./js/coach_goals.js"></script>
     <!-- MISSING SCRIPT HERE-->
     <?php
 $connection->close();

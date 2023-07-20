@@ -1,6 +1,8 @@
 <?php
     include "db.php";
-    session_start();
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
     $user_id = $_SESSION['user_id'];
     
     $sql = "SELECT tbl_210_users_test.id, tbl_210_users_test.username, tbl_210_details_test.full_name, tbl_210_details_test.birth_date, TIMESTAMPDIFF(YEAR, tbl_210_details_test.birth_date, CURDATE()) AS age, tbl_210_details_test.gender, tbl_210_details_test.potential as potential, tbl_210_union_test.team

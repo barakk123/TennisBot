@@ -1,11 +1,11 @@
 <?php
-include "db.php";
-include_once 'common/verify.php';
+    include "db.php";
+    include_once 'common/verify.php';
 
-$profileId = NULL;
-if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id']) && !empty($_GET['id'])) {
-    $profileId = $_GET["id"];
-}
+    $profileId = NULL;
+    if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id']) && !empty($_GET['id'])) {
+        $profileId = $_GET["id"];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id']) && !empty($_GET['i
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+    <title>Update Profile</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
@@ -42,6 +42,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id']) && !empty($_GET['i
     </div>
     <?php include_once 'common/footer.php'; ?>
 
-    <script src="js/profile.js"></script>
+    <script src="js/updateProfile.js"></script>
     <script src="js/global.js"></script>
 </body>

@@ -1,5 +1,10 @@
 <?php
     include_once 'common/verify.php';
+
+    $profileId = NULL;
+    if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id']) && !empty($_GET['id'])) {
+        $profileId = $_GET["id"];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -39,6 +44,7 @@
 
     <div class="formDiv">
         <form action="./choose_category.php" method="post">
+            <input type="hidden" id="profile_id" name="profile_id" value="<?=$profileId; ?>">
             <label class="form-nameofgoal-size">Name of goal</label>
             <input name="name" type="text" id="nameOfGoal" pattern=".+" required>
             <br>

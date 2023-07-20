@@ -1,14 +1,22 @@
 <?php
 include "db.php";
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
 
 if(!isset($_SESSION["user_id"])) {
     header("Location: login.php");
     exit;
 }
 
-$userId = $_SESSION["user_id"];
+if (isset($_GET["id"]) && !empty($_GET["id"])) {
+    $userId = $_GET["id"];
+}
+else {
+    $userId = $_SESSION["user_id"];
+}
+
 $sql = "SELECT DISTINCT(catDef.s_type) 
     FROM `tbl_210_categories_def_test` as catDef 
     JOIN `tbl_210_skills_test` as skills ON catDef.id = skills.category_id 

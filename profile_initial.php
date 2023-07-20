@@ -3,7 +3,9 @@
 include "db.php";
 
 // Start session
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
 
 // Check if user is not logged in
 if (!isset($_SESSION['user_type']) || empty($_SESSION['user_type'])) {

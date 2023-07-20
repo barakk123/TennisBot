@@ -14,11 +14,6 @@
         }
         
 ?>
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,6 +35,48 @@
 
 <body>
     <?php include_once 'common/nav.php'; ?>
+    <div class="filters">
+        <div class="name_search"><input type="text" id="name-search" placeholder="Search by name"></div>
+        <div class="age-box">
+            <div class="chkbox-data-container">
+                <input type="checkbox" id="male" name="male" value="Male">
+                <label for="male">Male</label>
+            </div>
+            <div class="chkbox-data-container">
+                <input type="checkbox" id="female" name="female" value="Female">
+                <label for="female">Female</label>
+            </div>
+        </div>
+        <div class="pot-box">
+
+                <h4>Potential</h4>
+                <div class="pot-box-cont">
+                    <div class="chkbox-data-container">
+                        <input type="checkbox" id="top" name="top" value="Top">
+                        <label for="top">Top</label>
+                    </div>
+                    
+                    <div class="chkbox-data-container">
+                        <input type="checkbox" id="high" name="high" value="High">
+                        <label for="high">High</label>
+                    </div>
+                    <div class="chkbox-data-container">
+                        <input type="checkbox" id="moderate" name="moderate" value="Moderate">
+                        <label for="moderate">Moderate</label>
+                    </div>
+                    <div class="chkbox-data-container">
+                        <input type="checkbox" id="low" name="low" value="Low">
+                        <label for="low">Low</label>
+                    </div>
+                    <div class="chkbox-data-container">
+                        <input type="checkbox" id="uncertain" name="uncertain" value="Uncertain">
+                        <label for="uncertain">Uncertain</label>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+    </div>
     <div id="tableContainer"></div>
 
     <?php include_once 'common/footer.php'; ?>

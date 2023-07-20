@@ -1,6 +1,8 @@
 <?php
 include "db.php";
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
 
 $sql = "
 SELECT u.*, d.full_name 

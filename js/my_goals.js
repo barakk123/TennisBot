@@ -249,9 +249,6 @@ function getProgress(goal) {
                     skill.subcategory_name === s.name &&
                     c.name === skill.category_name
             )?.skill_value;
-            console.log(
-                `Sub category: ${s.name}, start: ${start}, current: ${current}, target: ${target}`
-            );
             let sProgress = Math.min(
                 ((current - start) / (target - start)) * 100,
                 100

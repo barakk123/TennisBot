@@ -28,7 +28,6 @@ async function fetchUserData() {
     var api = profile_id
         ? `get_details.php?id=${profile_id}`
         : "get_details.php";
-
     const responseDetails = await fetch(api);
     const dataDetails = await responseDetails.json();
 
@@ -69,38 +68,53 @@ async function fetchUserData() {
     const dataUnion = await responseUnion.json();
 
     if (dataUnion.experience || dataUnion.rank || dataUnion.registered_date) {
-        if (profile_id) {
-            profileUnion.innerHTML += `
-            <h2 class="title">Union Data
-            <a href="update_profile.php?id=${profile_id}" class="my-goals-edit"">
-                ✏️
-            </a></h2>
-            `;
-        } else {
-            profileUnion.innerHTML += `<h2 class="title">Union Data</h2>`;
-        }
+        profileUnion.innerHTML += `<h2 class="title">Union Data</h2>`;
     }
     if (dataUnion.experience) {
-        profileUnion.innerHTML += `<div class="data"><b>Experience</b> ${
-            dataUnion.experience == -1
-                ? "Unknown yet"
-                : dataUnion.experience + " Years"
-        }</div>`;
+        if (profile_id) {
+            profileUnion.innerHTML += `<div class="data"><b>Experience</b> <input type="number" id="experience" value="${dataUnion.experience}"> </div>`;
+        } else {
+            profileUnion.innerHTML += `<div class="data"><b>Experience</b> ${
+                dataUnion.experience == -1
+                    ? "Unknown yet"
+                    : dataUnion.experience + " Years"
+            }</div>`;
+        }
     }
     if (dataUnion.rank) {
-        profileUnion.innerHTML += `<div class="data">
-            <b>Rank</b> ${dataUnion.rank == -1 ? "Unknown yet" : dataUnion.rank}
+        if (profile_id) {
+            profileUnion.innerHTML += `<div class="data">
+            <b>Rank</b> <input type="number" id="rank" value="${dataUnion.rank}">
         </div>`;
+        } else {
+            profileUnion.innerHTML += `<div class="data">
+                <b>Rank</b> ${
+                    dataUnion.rank == -1 ? "Unknown yet" : dataUnion.rank
+                }
+            </div>`;
+        }
     }
     if (dataUnion.team) {
-        profileUnion.innerHTML += `<div class="data">
-            <b>Team</b> ${dataUnion.rank == -1 ? "Unknown yet" : dataUnion.team}
-        </div>`;
+        if (profile_id) {
+            profileUnion.innerHTML += `<div class="data">
+                <b>Team</b> <input type="text" pattern="^([A-Z][a-z])(\s[A-Z][a-z])*$" id="team" value="${dataUnion.team}">
+            </div>`;
+        } else {
+            profileUnion.innerHTML += `<div class="data">
+                <b>Team</b> ${
+                    dataUnion.rank == -1 ? "Unknown yet" : dataUnion.team
+                }
+            </div>`;
+        }
     }
     if (dataUnion.registered_date) {
         profileUnion.innerHTML += `<div class="data"><b>Registered Date</b> ${mysqlDateToHuman(
             dataUnion.registered_date
         )}</div>`;
+    }
+
+    if (profile_id) {
+        profileUnion.innerHTML += `<button onclick="updateDetails()">Update</button>`;
     }
 
     //profileUnionContactNotic.appendChild(profileUnion);
@@ -112,7 +126,12 @@ async function fetchUserData() {
     const responseContact = await fetch(api);
     const dataContact = await responseContact.json();
 
-    if (!profile_id) {
+    if (profile_id) {
+        profileContact.innerHTML = `
+        <h2 class="title">Contact Details 
+        </h2>
+    `;
+    } else {
         profileContact.innerHTML = `
         <h2 class="title">Contact Details 
             <a href="update_profile.php" class="my-goals-edit"">
@@ -120,24 +139,38 @@ async function fetchUserData() {
             </a>
         </h2>
     `;
-    } else {
-        profileContact.innerHTML = `
-        <h2 class="title">Contact Details 
-        </h2>
-    `;
     }
-
     if (dataContact.phone) {
-        profileContact.innerHTML += `<div class="data"><b>Phone</b> ${dataContact.phone}</div>`;
+        if (profile_id) {
+            profileContact.innerHTML += `<div class="data"><b>Phone</b>${dataContact.phone}</div>`;
+        } else {
+            profileContact.innerHTML += `<div class="data"><b>Phone</b> <input type="tel" id="phone" required pattern="[0-9]{10}" value="${dataContact.phone}"></div>`;
+        }
     }
     if (dataContact.city) {
-        profileContact.innerHTML += `<div class="data"><b>City</b> ${dataContact.city}</div>`;
+        if (profile_id) {
+            profileContact.innerHTML += `<div class="data"><b>City</b>${dataContact.city}</div>`;
+        } else {
+            profileContact.innerHTML += `<div class="data"><b>City</b> <input type="text" id="city" required pattern="^([A-Z][a-z])(\s[A-Z][a-z])*$" value="${dataContact.city}"></div>`;
+        }
     }
     if (dataContact.emergency_phone) {
-        profileContact.innerHTML += `<div class="data"><b>Emergency Phone</b> ${dataContact.emergency_phone}</div>`;
+        if (profile_id) {
+            profileContact.innerHTML += `<div class="data"><b>Emergency Phone</b> ${dataContact.emergency_phone}</div>`;
+        } else {
+            profileContact.innerHTML += `<div class="data"><b>Emergency Phone</b> <input type="tel" id="emergency_phone" required pattern="[0-9]{10}" value="${dataContact.emergency_phone}"></div>`;
+        }
     }
     if (dataContact.email) {
-        profileContact.innerHTML += `<div class="data"><b>Email</b> ${dataContact.email}</div>`;
+        if (profile_id) {
+            profileContact.innerHTML += `<div class="data"><b>Email</b> ${dataContact.email}</div>`;
+        } else {
+            profileContact.innerHTML += `<div class="data"><b>Email</b> <input type="email" id="email" required value="${dataContact.email}"></div>`;
+        }
+    }
+
+    if (!profile_id) {
+        profileContact.innerHTML += `<button onclick="updateDetails()">Update</button>`;
     }
 
     //profileUnionContactNotic.appendChild(profileContact);
@@ -227,6 +260,61 @@ function saveUserImage() {
                     "success",
                     "Profile image updated successfully!",
                     "profile.php"
+                );
+            }
+        });
+}
+
+function updateDetails() {
+    let payload = {};
+    if (profile_id) {
+        const experience = document.getElementById("experience").value;
+        const rank = document.getElementById("rank").value;
+        const team = document.getElementById("team")?.value ?? null;
+
+        payload = {
+            profile_id,
+            experience,
+            rank,
+            team,
+        };
+    } else {
+        const phone = document.getElementById("phone").value;
+        const city = document.getElementById("city").value;
+        const emergency_phone =
+            document.getElementById("emergency_phone")?.value ?? null;
+        const email = document.getElementById("email").value;
+
+        payload = {
+            phone,
+            city,
+            emergency_phone,
+            email,
+        };
+    }
+
+    fetch("updateProfile.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            if (data.error) {
+                openLightbox(
+                    "error",
+                    data.error,
+                    profile_id
+                        ? "update_profile.php?id=" + profile_id
+                        : "update_profile.php"
+                );
+            } else {
+                openLightbox(
+                    "success",
+                    "Profile updated successfully!",
+                    profile_id ? "profile.php?id=" + profile_id : "profile.php"
                 );
             }
         });

@@ -6,10 +6,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $_SESSION["goal_name"] = $_POST["name"];
     $_SESSION["start_date"] = $_POST["start_date"];
     $_SESSION["end_date"] = $_POST["end_date"];
+    $_SESSION["profile_id"] = $_POST["profile_id"];
 }
 
 $coachId;
-$userId = $_SESSION["user_id"];
+if (isset($_SESSION["profile_id"]) && !empty($_SESSION["profile_id"])) {
+    $userId = $_SESSION["profile_id"];
+}
+else {
+    $userId = $_SESSION["user_id"];
+}
 
 $sql = 'SELECT coach_id FROM tbl_210_trainee_coach_test WHERE trainee_id = '.$userId;
 $response = $connection->query($sql);
@@ -66,6 +72,7 @@ if ($trainee && !empty($trainee['coach_id'])) {
         <form>
             <table></table>
             <input type="hidden" id="coach_id" name="coach_id" value="<?= $coachId; ?>">
+            <input type="hidden" id="profile_id" name="profile_id" value="<?=$_SESSION["profile_id"]; ?>">
             <input type="hidden" id="goal_name" name="goal_name" value="<?= $_SESSION["goal_name"];?>">
             <input type="hidden" id="start_date" name="start_date" value="<?= $_SESSION["start_date"];?>">
             <input type="hidden" id="end_date" name="end_date" value="<?= $_SESSION["end_date"];?>">

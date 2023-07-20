@@ -1,10 +1,19 @@
 <?php
+    include_once 'db.php';
+
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+
     $user_type = $_SESSION['user_type'];
+    $sql = "SELECT profile_pic FROM tbl_210_details_test WHERE user_id = $user_id";
+    $result = $connection->query($sql);
+    $data = mysqli_fetch_assoc($result);
 ?>
 
+<input type="hidden" name="profile_pic" value="<?=$data['profile_pic'];?>">
+
 <div class="nav-container">
-
-
     <div class="header-container">
         <div class="menu-container">
 
@@ -13,7 +22,11 @@
             <div id="mySidenav" class="sidenav">
                 <div class="sidenavcontent">
                     <!--Profile pic -->
+                    <a href="profile.php">
+                        <img src="images/profile.jpeg" class="profile_image" id="profile_image2" class="profile margin" alt="profile">
+                    </a>
                     <!--Name of user from database -->
+
                     <!--View profile button -->
                     <a href="#">My Account</a>
                     <a href="#">Settings</a>
@@ -34,7 +47,7 @@
             </div>
             <div class="logout-button-pc"><a href="logout.php" class="logout-button">Log Out</a></div>
             <a href="profile.php">
-                <img src="images/profile.svg" class="profile margin" alt="profile">
+                <img src="images/profile.jpeg" class="profile_image" class="profile margin" alt="profile">
             </a>
             <a href="#">
                 <img src="images/bell.svg" class="profile green margin" alt="Notifications">
@@ -43,7 +56,7 @@
         <nav class="nav-desktop">
             <ul>
                 <li>
-                    <a href="#" class="nav-home navlink">
+                    <a href="index.php" class="nav-home navlink">
                         <div class="text-home">Home</div>
                     </a>
                 </li>
@@ -72,7 +85,8 @@
                 </li>
                 <li>
                     <div class="dropdown">
-                        <button class="text-home btn btn-default dropdown-toggle" type="button" data-bs-toggle="dropdown">Reports
+                        <button class="text-home btn btn-default dropdown-toggle" type="button"
+                            data-bs-toggle="dropdown">Reports
                             <span class="caret"></span></button>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">My Reports</a></li>
@@ -100,7 +114,7 @@
                 </a>
             </li>
             <li>
-            <?php
+                <?php
                     if ($user_type == 'Coach') {
                         echo '
                         <a href="trainees_list.php" class="nav-home navlink">

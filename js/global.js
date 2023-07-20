@@ -87,3 +87,10 @@ document.getElementById("overlay_ham").addEventListener("click", function (e) {
         overlay.style.display = "none";
     }
 });
+
+var pPic = document.querySelector('input[name="profile_pic"]')?.value;
+if (pPic) {
+    document
+        .querySelectorAll(".profile_image")
+        .forEach((elm) => elm.setAttribute("src", pPic));
+}

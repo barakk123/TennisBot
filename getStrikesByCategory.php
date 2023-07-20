@@ -3,7 +3,9 @@
 
 include "db.php";
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
 if(!isset($_SESSION["user_id"])) {
     header("Location: login.php");
     exit;
@@ -38,7 +40,7 @@ if ($category != '') {
 }
 
 // Order by category_id
-$sql .= " ORDER BY catDef.id";
+$sql .= " ORDER BY catDef.id, subCatDef.id";
 
 $result = $connection->query($sql);
 

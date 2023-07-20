@@ -729,7 +729,6 @@ button.delete-btn a {
 .sidenavcontent {
     display: flex;
     flex-direction: column;
-    margin-top: 100px;
     padding: 10px;
 }
 
@@ -918,7 +917,6 @@ div.error-message {
     margin-top: 10px;
 }
 
-
 .profile-image {
     width: 100px;
     height: 100px;
@@ -927,6 +925,58 @@ div.error-message {
     overflow: hidden;
     object-fit: cover;
     margin-left: 10px;
+}
+
+.profile_image {
+    width: 40px;
+    height: 40px;
+    margin: 0 20px 0 0;
+    border-radius: 50%;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+#profile_image2 {
+    width: 100px;
+    height: 100px;
+    margin: 0px 0px 8px 0px;
+    border-radius: 50%;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.filters {
+    display: flex;
+    flex-direction: column;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+.pot-box>h4 {
+    line-height: 1.1;
+}
+
+.pot-box {
+    margin-left: 10px;
+    margin-top: 6px;
+}
+
+.pot-box-cont {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.name_search {
+    margin-left: 10px;
+}
+
+.age-box {
+    margin-left: 10px;
+    display: flex;
+    margin-top: 6px;
+}
+
+.chkbox-data-container {
+    margin-right: 10px;
 }
 
 .fileInput {
@@ -962,11 +1012,11 @@ div.error-message {
     margin-left: 10px;
 }
 
-#skillsForm>div>input {
+#skillsForm > div > input {
     width: 50px;
 }
 
-#skillsForm>div>label {
+#skillsForm > div > label {
     width: 180px;
 }
 
@@ -1009,13 +1059,13 @@ div.error-message {
 }
 
 @media (min-width: 419px) {
-    #skillsForm>div>label {
+    #skillsForm > div > label {
         width: 220px;
     }
 }
 
 @media (min-width: 472px) {
-    #skillsForm>div>label {
+    #skillsForm > div > label {
         width: 180px;
     }
 }
@@ -1093,7 +1143,7 @@ div.error-message {
         font-size: 18px;
     }
 
-    h2.title>a.my-goals-edit {
+    h2.title > a.my-goals-edit {
         margin-top: 16px;
         margin-left: 10px;
         font-size: 22px;
@@ -1215,11 +1265,19 @@ div.error-message {
         height: 140px;
     }
 
+    .profile_image {
+        width: 40px;
+        height: 40px;
+        margin: 0 20px 0 0;
+    }
+
     .profile_details_pic_wrapper {
         gap: 14px;
     }
 
-    .profile_details > h2, .profile_union > h2, .profile_contact > h2 {
+    .profile_details > h2,
+    .profile_union > h2,
+    .profile_contact > h2 {
         margin-top: 16px;
         margin-left: 10px;
         font-size: 32px;
@@ -1235,7 +1293,6 @@ div.error-message {
         font-size: 18px;
     }
 
-    
 }
 
 @media (min-width: 650px) {
@@ -1759,7 +1816,7 @@ div.error-message {
         display: flex !important;
     }
 
-    h2.title>.my-goals-edit{
+    h2.title > .my-goals-edit {
         margin: 0px 18px;
     }
 
@@ -1773,18 +1830,21 @@ div.error-message {
         font-size: 26px;
     }
 
-    #loginName.form-control, #loginPass.form-control {
+    #loginName.form-control,
+    #loginPass.form-control {
         height: 60px;
         font-size: 24px;
     }
 
-    .login_button, .register_button {
+    .login_button,
+    .register_button {
         width: 160px;
         height: 60px;
         font-size: 24px;
     }
 
-    #registerName.form-control, #registerPass.form-control {
+    #registerName.form-control,
+    #registerPass.form-control {
         height: 60px;
         font-size: 24px;
     }
@@ -1801,22 +1861,35 @@ div.error-message {
         align-items: center;
         margin-top: 20px;
     }
+
+    .profile_image {
+        width: 70px;
+        height: 70px;
+        margin: 0px;
+    }
+
+    .pot-box {
+        display: flex;
+        flex-direction: column;
+        margin-left: 40px;
+        align-items: center;
+    }
+
+    .filters {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        padding: 12px 0px;
+        margin: 18px;
+        border: solid 1px grey;
+    }
+
+    .pot-box>h4 {
+        line-height: 0.8;
+        margin-right: 18px;
+    }
 }
 
 .progress {
     width: 81px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

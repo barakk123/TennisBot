@@ -3,13 +3,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     form.addEventListener("submit", function (event) {
         // Validation for minimum number of filled inputs
-        var inputs = form.querySelectorAll('input[type=number]');
-        var filledInputs = Array.prototype.filter.call(inputs, function(input) {
-            return input.value !== '';
-        });
+        var inputs = form.querySelectorAll("input[type=number]");
+        var filledInputs = Array.prototype.filter.call(
+            inputs,
+            function (input) {
+                return input.value !== "";
+            }
+        );
 
         if (filledInputs.length < 4) {
-            alert('Please fill at least 4 inputs.');
+            alert("Please fill at least 4 inputs.");
             event.preventDefault();
             return; // This will stop the execution of the following code in case the validation fails
         }
@@ -20,15 +23,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
         fetch("setTraineeSkills.php", {
             method: "POST",
-            body: formData
+            body: formData,
         })
             .then((response) => response.text())
             .then((result) => {
                 // Handle the result of the request
-                console.log(result);
+                openLightbox(
+                    "success",
+                    "Updated successfully!",
+                    "my_goals.php"
+                );
             })
             .catch((error) => {
-                console.error("Error:", error);
+                openLightbox("error", error, null);
             });
     });
 });
