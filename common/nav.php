@@ -59,7 +59,7 @@
                     else {
                         echo '
                         <div class="dropdown">
-                            <button class="btn btn-default dropdown-toggle" type="button" data-bs-toggle="dropdown">Goals
+                            <button class="text-home btn btn-default dropdown-toggle" type="button" data-bs-toggle="dropdown">Goals
                                 <span class="caret"></span></button>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="index.php">My Goals</a></li>
@@ -72,7 +72,7 @@
                 </li>
                 <li>
                     <div class="dropdown">
-                        <button class="btn btn-default dropdown-toggle" type="button" data-bs-toggle="dropdown">Reports
+                        <button class="text-home btn btn-default dropdown-toggle" type="button" data-bs-toggle="dropdown">Reports
                             <span class="caret"></span></button>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">My Reports</a></li>
@@ -100,14 +100,27 @@
                 </a>
             </li>
             <li>
-                <div class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button"
-                        data-bs-toggle="dropdown">Goals</button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="index.php" class="my-goals-link">My Goals</a></li>
-                        <li><a class="dropdown-item" href="#">Coach Goals</a></li>
-                    </ul>
-                </div>
+            <?php
+                    if ($user_type == 'Coach') {
+                        echo '
+                        <a href="trainees_list.php" class="nav-home navlink">
+                            <div class="text-home2">Trainees</div>
+                        </a>
+                        ';
+                    }
+                    else {
+                        echo '
+                        <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button"
+                            data-bs-toggle="dropdown">Goals</button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="index.php" class="my-goals-link">My Goals</a></li>
+                            <li><a class="dropdown-item" href="#">Coach Goals</a></li>
+                        </ul>
+                        </div>
+                        ';
+                    }
+                    ?>
             </li>
             <li>
                 <div class="dropdown drpdwn3">

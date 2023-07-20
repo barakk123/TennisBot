@@ -11,16 +11,20 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST["registerName"]) && !em
   
     if(preg_match('/^(?=.*[A-Za-z])[A-Za-z0-9]{3,}$/', $username) && preg_match('/^[A-Za-z0-9]{6,}$/', $password)) {
         $stmt = $connection->prepare("SELECT * FROM tbl_210_users_test WHERE username=?");
-        if ($stmt == false) {
+        if ($stmt === false) {
             die('mysqli_prepare failed: ' . mysqli_error($connection));
         }
         $stmt->bind_param('s', $username);
         if ($stmt->execute()) {
-            $result = $stmt->get_result();
-            if ($result->num_rows > 0) {
+            // Bind result variables.
+            mysqli_stmt_bind_result($stmt, $id, $username_result, $password_result, $type_result);
+    
+            // Fetch the result into the bound variables.
+            if (mysqli_stmt_fetch($stmt)) {
                 $message = "Username already taken!";
-            }
-            else {
+            } else {
+                $stmt->close(); // Close the previous statement
+            
                 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
                 $stmt = $connection->prepare("INSERT INTO tbl_210_users_test (username, password, user_type) VALUES (?, ?, ?)");
                 $stmt->bind_param('sss', $username, $hashed_password, $type);

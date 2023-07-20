@@ -1,4 +1,5 @@
 <?php
+    include "config.php";
     $dbhost = "148.66.138.145";
     $dbuser = "dbusrShnkr23";
     $dbpass = "studDBpwWeb2!";

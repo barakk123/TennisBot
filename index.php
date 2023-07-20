@@ -48,8 +48,8 @@
         </div>
         <?php include_once 'common/footer.php'; ?>
     </div>
-    <script src="./js/global.js"></script>
-    <script src="./js/index.js"></script>
+    <script src="js/global.js"></script>
+    <script src="js/index.js"></script>
     <?php
 $connection->close();
 ?>

@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.addEventListener("DOMContentLoaded", function () {
     const addGoalBtn = document.getElementById("add-goal-btn");
-
+    const wrapperHead = document.getElementsByClassName("wrapper-head")[0];
     if (addGoalBtn) {
         // Add a click event listener to the button
         addGoalBtn.addEventListener("click", function () {
@@ -65,6 +65,13 @@ document.addEventListener("DOMContentLoaded", function () {
                         );
                         // Disable the button after clicking
                         addGoalBtn.setAttribute("disabled", "true");
+                        // show the new "For Yonit" button here
+                        var newButton = document.createElement("a");   // Create a new link element
+                        newButton.innerHTML = "For Yonit";            // Set the text
+                        newButton.href = "addToSkillTable.php";       // Set the target URL
+                        newButton.classList.add("new-button-class");  // Set a CSS class if needed
+
+                       wrapperHead.appendChild(newButton); 
                     } else window.location.href = "add_goal.php";
                 });
         });

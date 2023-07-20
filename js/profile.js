@@ -131,8 +131,8 @@ fetchUserData(); // Call the function to start fetching data
 bigContainer.appendChild(profileDetailsPic);
 bigContainer.appendChild(profileUnionContactNotic);
 
-let wrapper = document.querySelector(".wrapper");
-wrapper.appendChild(bigContainer);
+let wrapper2 = document.querySelector(".wrapper2");
+wrapper2.appendChild(bigContainer);
 
 function calculateAge(birthDate) {
     let birth = new Date(birthDate);

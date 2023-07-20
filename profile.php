@@ -32,7 +32,7 @@
 <body>
     <?php include_once 'common/nav.php'; ?>
 
-    <div class="wrapper">
+    <div class="wrapper2">
 
     </div>
     <?php include_once 'common/footer.php'; ?>

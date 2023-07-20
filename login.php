@@ -3,6 +3,8 @@
 
     session_start();
 
+    $message = ''; // Initialize here so it's always set
+
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST["loginName"]) && !empty($_POST["loginPass"])) {
 
         $username = $_POST["loginName"];
@@ -16,13 +18,16 @@
         mysqli_stmt_bind_param($stmt, 's', $username);
        
         mysqli_stmt_execute($stmt);
-        $result = mysqli_stmt_get_result($stmt);
 
-        if($row = mysqli_fetch_assoc($result)) {
+        // Bind result variables.
+        mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password, $user_type);
+
+        // Fetch the result into the bound variables.
+        if (mysqli_stmt_fetch($stmt)) {
             // Verify the password against the hashed password in the database
-            if(password_verify($password, $row['password']) || $password == $row['password']) {
-                $_SESSION["user_id"] = $row['id'];
-                $_SESSION["user_type"] = $row['user_type'];
+            if(password_verify($password, $hashed_password)) {
+                $_SESSION["user_id"] = $id;
+                $_SESSION["user_type"] = $user_type;
 
                 if (isset($_SESSION['register_completed']) && $_SESSION['register_completed'] == false) {
                     header('Location: profile_initial.php');
@@ -36,7 +41,6 @@
             else {
                 $message = "Invalid Username or Password!";
             }
-            
         } else {
             $message = "Invalid Username or Password!";
         }

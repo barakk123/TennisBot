@@ -1,5 +1,5 @@
 <?php
-include 'db.php'; // Assumes you have a db_connect.php to establish a db connection
+include 'db.php'; 
 
 
 session_start();

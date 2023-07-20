@@ -81,7 +81,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
     </script>
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/profile_initial.js"></script>
 </head>
 
 <body>
@@ -93,9 +92,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="form-group">
                 <label for="full_name">Full Name: </label>
                 <input type="text" class="form-control" required
-                    pattern="([a-zA-Z]{2,}-[a-zA-Z]{2,}|[a-zA-Z]{2,}) ([a-zA-Z]{2,}-[a-zA-Z]{2,}|[a-zA-Z]{2,})"
+                    pattern="([A-Z][a-z]{1,}-[A-Z][a-z]{1,}|[A-Z][a-z]{1,}) ([A-Z][a-z]{1,}-[A-Z][a-z]{1,}|[A-Z][a-z]{1,})"
                     name="full_name" id="full_name" placeholder="Enter full name" maxlength="30">
             </div>
+
             <div class="form-group">
                 <label for="birth_date">Birth Date: </label>
                 <input type="date" class="form-control" required name="birth_date" id="birth_date"

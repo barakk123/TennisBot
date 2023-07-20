@@ -78,10 +78,6 @@ ul {
     padding: 0;
 }
 
-.dropdown.drpdwn3 {
-    margin-left: -18px;
-}
-
 li {
     margin-right: 5px;
     margin-left: 5px;
@@ -110,6 +106,7 @@ a {
     font-weight: 700 !important;
     font-family: "Tahoma" !important;
     text-decoration: none !important;
+    --bs-btn-padding-x: 0px;
 }
 
 .btn.active.focus,
@@ -251,6 +248,7 @@ tr {
     align-items: center;
     width: 100%;
     padding: 2px;
+    justify-content: space-between;
 }
 
 .tr_wrapper {
@@ -870,6 +868,12 @@ div.error-message {
     display: none;
 }
 
+.wrapper2 {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
 .logout-button-ham {
     margin-top: 100px;
     color: #001fc8 !important;
@@ -958,6 +962,14 @@ div.error-message {
     margin-left: 10px;
 }
 
+#skillsForm>div>input {
+    width: 50px;
+}
+
+#skillsForm>div>label {
+    width: 180px;
+}
+
 .addTraineeBtn {
     width: 110px;
     margin-top: 20px;
@@ -983,11 +995,28 @@ div.error-message {
     margin-left: 10px;
 }
 
+.new-button-class {
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
 @media (min-width: 400px) {
     .edit-btn,
     .delete-btn {
         padding: 0px 8px 2px 4px;
         font-size: 12px;
+    }
+}
+
+@media (min-width: 419px) {
+    #skillsForm>div>label {
+        width: 220px;
+    }
+}
+
+@media (min-width: 472px) {
+    #skillsForm>div>label {
+        width: 180px;
     }
 }
 
@@ -1004,8 +1033,8 @@ div.error-message {
     }
 
     .form-control {
-        font-size: 22px;
-        height: 60px;
+        font-size: 32px;
+        height: 80px;
     }
 
     #profileForm > .form-group > label {
@@ -1062,6 +1091,12 @@ div.error-message {
     .my-goals-edit,
     .my-goals-delete {
         font-size: 18px;
+    }
+
+    h2.title>a.my-goals-edit {
+        margin-top: 16px;
+        margin-left: 10px;
+        font-size: 22px;
     }
 
     .headline {
@@ -1174,6 +1209,33 @@ div.error-message {
     .delete-btn {
         padding: 0px 10px 2px 10px;
     }
+
+    .profile-image {
+        width: 140px;
+        height: 140px;
+    }
+
+    .profile_details_pic_wrapper {
+        gap: 14px;
+    }
+
+    .profile_details > h2, .profile_union > h2, .profile_contact > h2 {
+        margin-top: 16px;
+        margin-left: 10px;
+        font-size: 32px;
+    }
+
+    .data {
+        margin-left: 10px;
+        font-size: 24px;
+    }
+
+    .fileInputWrapper {
+        width: 90px;
+        font-size: 18px;
+    }
+
+    
 }
 
 @media (min-width: 650px) {
@@ -1699,6 +1761,45 @@ div.error-message {
 
     h2.title>.my-goals-edit{
         margin: 0px 18px;
+    }
+
+    .login_title {
+        margin-top: 40px;
+        margin-bottom: 28px;
+        font-size: 40px;
+    }
+
+    .login_name_pass {
+        font-size: 26px;
+    }
+
+    #loginName.form-control, #loginPass.form-control {
+        height: 60px;
+        font-size: 24px;
+    }
+
+    .login_button, .register_button {
+        width: 160px;
+        height: 60px;
+        font-size: 24px;
+    }
+
+    #registerName.form-control, #registerPass.form-control {
+        height: 60px;
+        font-size: 24px;
+    }
+
+    .form-control {
+        font-size: 24px;
+        height: 60px;
+    }
+
+    .wrapper2 {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        align-items: center;
+        margin-top: 20px;
     }
 }
 
