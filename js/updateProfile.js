@@ -113,7 +113,7 @@ async function fetchUserData() {
     }
 
     if (profile_id) {
-        profileUnion.innerHTML += `<button onclick="updateDetails()">Update</button>`;
+        profileUnion.innerHTML += `<button onclick="updateDetails()" class="save_profile_btn">Update</button>`;
     }
 
     // Fetching user contact data
@@ -132,30 +132,29 @@ async function fetchUserData() {
         profileContact.innerHTML = `
         <h2 class="title">Contact Details 
             <a href="update_profile.php" class="my-goals-edit"">
-                ✏️
             </a>
         </h2>
     `;
     }
     if (dataContact.phone) {
         if (profile_id) {
-            profileContact.innerHTML += `<div class="data"><b>Phone</b>${dataContact.phone}</div>`;
+            profileContact.innerHTML += `<div class="data"><b>Phone</b> ${dataContact.phone}</div>`;
         } else {
             profileContact.innerHTML += `<div class="data"><b>Phone</b> <input type="tel" id="phone" required pattern="[0-9]{10}" value="${dataContact.phone}"></div>`;
         }
     }
     if (dataContact.city) {
         if (profile_id) {
-            profileContact.innerHTML += `<div class="data"><b>City</b>${dataContact.city}</div>`;
+            profileContact.innerHTML += `<div class="data"><b>City</b> ${dataContact.city}</div>`;
         } else {
             profileContact.innerHTML += `<div class="data"><b>City</b> <input type="text" id="city" required pattern="^([A-Z][a-z])(\s[A-Z][a-z])*$" value="${dataContact.city}"></div>`;
         }
     }
     if (dataContact.emergency_phone) {
         if (profile_id) {
-            profileContact.innerHTML += `<div class="data"><b>Emergency Phone</b> ${dataContact.emergency_phone}</div>`;
+            profileContact.innerHTML += `<div class="data"><b>Emer. Phone</b> ${dataContact.emergency_phone}</div>`;
         } else {
-            profileContact.innerHTML += `<div class="data"><b>Emergency Phone</b> <input type="tel" id="emergency_phone" required pattern="[0-9]{10}" value="${dataContact.emergency_phone}"></div>`;
+            profileContact.innerHTML += `<div class="data"><b>Emer. Phone</b> <input type="tel" id="emergency_phone" required pattern="[0-9]{10}" value="${dataContact.emergency_phone}"></div>`;
         }
     }
     if (dataContact.email) {
@@ -167,7 +166,7 @@ async function fetchUserData() {
     }
 
     if (!profile_id) {
-        profileContact.innerHTML += `<button onclick="updateDetails()">Update</button>`;
+        profileContact.innerHTML += `<button onclick="updateDetails()" class="save_profile_btn">Update</button>`;
     }
 
     //profileUnionContactNotic.appendChild(profileNotic); // this is empty for now

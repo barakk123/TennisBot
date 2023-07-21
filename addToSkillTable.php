@@ -56,6 +56,7 @@
     <?php include_once 'common/nav.php'; ?>
     For Yonit: Hey, this page is just to let you keep the flow if you tests new trainees you created.<br>
     OFC Trainee cant change this skills value for himself - its the Robot's job
+    WARNNING: DO NOT TRY TO ADD GOAL BEFORE ASSIGN COACH TO THIS TRAINEE!!! <br> You can login to a coach/new coach and ASSIGN the coach to the trainee.
     <div id="traineeContainer">
         <form id="skillsForm">
             <input type="hidden" id="profile_id" name="profile_id" value="<?=$profileId; ?>">

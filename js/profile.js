@@ -25,9 +25,8 @@ let profile_id = document.getElementById("profile_id")?.value;
 // Fetching user details, union and contact data in order
 async function fetchUserData() {
     // Fetching user details
-    var api = profile_id
-        ? `get_details.php?id=${profile_id}`
-        : "get_details.php";
+    var api = profile_id ? `get_details.php?id=${profile_id}` : "get_details.php";
+
 
     const responseDetails = await fetch(api);
     const dataDetails = await responseDetails.json();
@@ -164,15 +163,18 @@ async function fetchUserData() {
     profileUnionContactNotic.appendChild(profileUnion);
     profileUnionContactNotic.appendChild(profileContact);
 
-    const profile_pic = document.querySelector(
-        'input[name="profile_pic"]'
-    )?.value;
-    if (profile_pic) {
-        document
-            .getElementById("profile-image")
-            .setAttribute("src", profile_pic);
+if (dataDetails.profile_pic) {
+    // Set the src attribute of the image
+    document
+        .getElementById("profile-image")
+            .setAttribute("src", dataDetails.profile_pic);
+        } else {
+            // Log error to console
+            console.error("No profile picture found for user with id " + profile_id);
+        }
     }
-}
+
+
 
 fetchUserData(); // Call the function to start fetching data
 

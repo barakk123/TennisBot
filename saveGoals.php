@@ -64,15 +64,15 @@ foreach ($goal['categories'] as $category) {
         }
     }
 }
-
 function getCategoryID($category_name) {
     global $connection;
     $stmt = $connection->prepare("SELECT id FROM tbl_210_categories_def WHERE name = ?");
     $stmt->bind_param('s', $category_name);
     $stmt->execute();
-    $result = $stmt->get_result();
-    $row = $result->fetch_assoc();
-    return $row['id'];
+    $id = null;
+    $stmt->bind_result($id);
+    $stmt->fetch();
+    return $id;
 }
 
 function getSubcategoryID($subcategory_name) {
@@ -80,10 +80,13 @@ function getSubcategoryID($subcategory_name) {
     $stmt = $connection->prepare("SELECT id FROM tbl_210_subcategories_def WHERE name = ?");
     $stmt->bind_param('s', $subcategory_name);
     $stmt->execute();
-    $result = $stmt->get_result();
-    $row = $result->fetch_assoc();
-    return $row['id'];
+    $id = null;
+    $stmt->bind_result($id);
+    $stmt->fetch();
+    return $id;
 }
+
 
 echo json_encode(['message' => 'Goal saved successfully', 'goal_id' => $goal_id]);
 $connection->close();
+?>
